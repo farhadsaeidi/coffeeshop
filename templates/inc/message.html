@@ -1,0 +1,84 @@
+{% load static %}
+{% if messages %}
+{#    <div id="alert-container" class="container">#}
+{#        {% for message in messages %}#}
+{#            <div class="alert alert-{{ message.tags }} alert-dismissible fade show m-0" role="alert">#}
+{#                {% if "success" in message.tags %}#}
+{#                    <i style="font-size: 20px" class="fa fa-check-circle mx-1"></i>#}
+{#                {% elif "info" in message.tags %}#}
+{#                    <i style="font-size: 20px" class="fa fa-info-circle mx-1"></i>#}
+{#                {% elif "warning" in message.tags %}#}
+{#                    <i style="font-size: 20px" class="fa fa-exclamation-triangle mx-1"></i>#}
+{#                {% elif "error" in message.tags %}#}
+{#                    <i style="font-size: 20px" class="fa fa-exclamation-circle mx-1"></i>#}
+{#                {% endif %}#}
+{#                {{ message }}#}
+{#                <button style="box-shadow: none" type="button" class="btn-close" data-bs-dismiss="alert"#}
+{#                        aria-label="Close"></button>#}
+{#                <div class="d-flex align-items-center mt-2">#}
+{#                    <!-- دکمه pause -->#}
+{#                    <button id="pause-button" type="button" class="btn btn-lg border-0 p-0 mx-1"#}
+{#                            style="font-size: 22px;">#}
+{#                        <i id="pause-icon" class="bi bi-pause-circle-fill"></i>#}
+{#                    </button>#}
+{#                    <div class="progress" style="height: 8px; flex-grow: 1;">#}
+{#                        <div id="progress-bar" class="progress-bar" role="progressbar"#}
+{#                             style="width: 0; background-color:#}
+{#                                     {% if "success" in message.tags %}#}
+{#                                         #28a745#}
+{#                                     {% elif "info" in message.tags %}#}
+{#                                         #0038da#}
+{#                                     {% elif "warning" in message.tags %}#}
+{#                                         #d8a500#}
+{#                                     {% elif "error" in message.tags %}#}
+{#                                         #dc0018#}
+{#                                     {% endif %}">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+
+    <div id="alert-container" class="container mx-auto">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show m-0 flex flex-col gap-2"
+                 role="alert">
+                {% if "success" in message.tags %}
+                    <i class="fa fa-check-circle text-[20px] mx-1"></i>
+                {% elif "info" in message.tags %}
+                    <i class="fa fa-info-circle text-[20px] mx-1"></i>
+                {% elif "warning" in message.tags %}
+                    <i class="fa fa-exclamation-triangle text-[20px] mx-1"></i>
+                {% elif "error" in message.tags %}
+                    <i class="fa fa-exclamation-circle text-[20px] mx-1"></i>
+                {% endif %}
+                {{ message }}
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="flex items-center mt-2">
+                    <button id="pause-button" type="button" class="border-0 p-0 mx-1 text-[22px]">
+{#                        <i id="pause-icon" class="bi bi-pause-circle-fill"></i>#}
+                        <i id="pause-icon" class="fa-solid fa-pause-circle"></i>
+                    </button>
+                    <div class="w-full h-2 flex-1">
+                        <div id="progress-bar" class="h-full transition-all duration-300"
+                             style="width: 0; background-color:
+                                     {% if 'success' in message.tags %}
+                                         #28a745
+                                     {% elif 'info' in message.tags %}
+                                         #0038da
+                                     {% elif 'warning' in message.tags %}
+                                         #d8a500
+                                     {% elif 'error' in message.tags %}
+                                         #dc0018
+                                     {% endif %};">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% block js %}
+        <script src="{% static 'home/js/script.js' %}"></script>
+    {% endblock %}
+{% endif %}

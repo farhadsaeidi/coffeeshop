@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none !important;
+    text-underline-offset: 6px !important;
+    color: inherit !important;
+}
+
+@media (max-width: 400px) {
+    a {
+        text-underline-offset: 4px !important;
+    }
+}
+
+/* سفارشی کردن اسکرول بار با استفاده از فایل استاتیک کتابخانه ی OverlayScrollbars */
+.os-scrollbar {
+    /* os-scrollbar ---> کانتینر اصلی اسکرلبار */
+    /* var(--rounded) ---> این مقدار از متغیر باکس مورد نظر در نظر گرفته شده */
+    padding: var(--rounded) 0 !important;
+}
+
+/* استایل اسکرول‌بار در حالت لایت (پیش‌فرض) */
+.os-scrollbar .os-scrollbar-track .os-scrollbar-handle {
+    background: #FDBA74 !important;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out !important;
+    width: 6px !important;
+    max-height: 120px !important;
+}
+
+/* استایل اسکرول‌بار در حالت دارک */
+html.dark .os-scrollbar .os-scrollbar-track .os-scrollbar-handle {
+    background: #FDBA74 !important;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out !important;
+    width: 6px !important;
+    max-height: 120px !important;
+}
+
+/* استایل اسکرول‌بار برای هاور شدن (پیش‌فرض) */
+.os-scrollbar .os-scrollbar-track .os-scrollbar-handle:hover {
+    opacity: 1;
+}
+
+/* استایل اسکرول‌بار برای هاور شدن (حالت دارک) */
+html.dark .os-scrollbar .os-scrollbar-track .os-scrollbar-handle:hover {
+    opacity: 1;
+}
+
+/* برای باکس‌هایی که اسکرول‌بار باید در سمت راست باشد */
+[data-scrollbar-position="right"] .os-scrollbar-vertical {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* برای باکس‌هایی که اسکرول‌بار باید در سمت چپ باشد */
+[data-scrollbar-position="left"] .os-scrollbar-vertical {
+    left: 0 !important;
+    right: auto !important;
+}

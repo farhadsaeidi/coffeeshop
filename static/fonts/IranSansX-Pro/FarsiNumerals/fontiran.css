@@ -1,0 +1,109 @@
+/**
+*
+*	Name:			IRANSansXFaNum Fonts
+*	Version:			2.4
+*	Author:			Moslem Ebrahimi (moslemebrahimi.com)
+*	Created on:		Apr 22, 2021
+*	Updated on:		Apr 22, 2021
+*	Website:			http://fontiran.com
+*	Copyright:		Commercial/Proprietary Software
+--------------------------------------------------------------------------------------
+فونتایران سنس Xا یک نرم افزار مالکیتی محسوب می شود. جهت آگاهی از قوانین استفاده از این فونت ها لطفا به وب سایت (فونت ایران دات کام) مراجعه نمایید
+--------------------------------------------------------------------------------------
+IRANSansXFaNum fonts are considered a proprietary software. To gain information about the laws regarding the use of these fonts, please visit www.fontiran.com 
+--------------------------------------------------------------------------------------
+This set of fonts are used in this project under the license: (.....)
+------------------------------------------------------------------------------------- fonts/-
+*	
+**/
+
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 100;
+	src: url('WebFonts/Woff/IRANSansXFaNum-Thin.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-Thin.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-Thin.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-Thin.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 200;
+	src: url('WebFonts/Woff/IRANSansXFaNum-UltraLight.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-UltraLight.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-UltraLight.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-UltraLight.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 300;
+	src: url('WebFonts/Woff/IRANSansXFaNum-Light.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-Light.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-Light.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 500;
+	src: url('WebFonts/Woff/IRANSansXFaNum-Medium.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-Medium.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-Medium.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-Medium.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 600;
+	src: url('WebFonts/Woff/IRANSansXFaNum-DemiBold.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-DemiBold.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-DemiBold.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-DemiBold.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 800;
+	src: url('WebFonts/Woff/IRANSansXFaNum-ExtraBold.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-ExtraBold.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-ExtraBold.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-ExtraBold.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 900;
+	src: url('WebFonts/Woff/IRANSansXFaNum-Black.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-Black.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-Black.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-Black.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: bold;
+	src: url('WebFonts/Woff/IRANSansXFaNum-Bold.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-Bold.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-Bold.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-Bold.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: normal;
+	src: url('WebFonts/Woff/IRANSansXFaNum-Regular.woff') format('woff'),
+	url('WebFonts/Woff2/IRANSansXFaNum-Regular.woff2') format('woff2'),
+	url('OtfFonts/IRANSansXFaNum-Regular.otf') format('otf'),
+	url('TtfFonts/IRANSansXFaNum-Regular.ttf') format('ttf');
+}

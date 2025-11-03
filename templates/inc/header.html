@@ -1,0 +1,571 @@
+{% load static %}
+<!--- این تگ هدر فقط برای حالت دسکتاپ هست --->
+<header class="fixed top-3 right-0 left-0 z-10 hidden md:flex items-center w-[98%] lg:w-[90%] h-24 bg-var-color-21 !pr-5 !pl-[17px] !py-5 mx-auto rounded-3xl backdrop-blur-[6px]">
+    <section class="flex justify-between items-center w-full">
+        <!--- Logo & Menu --->
+        <nav class="flex items-center gap-x-4 xl:gap-x-9 h-14">
+            <!--- Logo --->
+            <!--- shrink-0: از کوچیک شدن المان جلوگیری میکنه و باعث میشه المان اندازه اصلی خودش رو حفظ کنه --->
+            <div class="shrink-0">
+                <img src="{% static 'icons/logo.png' %}" alt="Logo">
+            </div>
+            <!--- Menu --->
+            <!--- [&>a:not(.font-IRANSansXFaNumMedium)]: همه لینک ها به جز لینک صفحه اصلی --->
+            <div class="flex items-center h-full gap-x-4 xl:gap-x-9 m-0 text-lg lg:text-xl tracking-tightest
+                        [&>a:not(.font-IRANSansXFaNumMedium)]:!text-var-color-15
+                        [&>a:not(.font-IRANSansXFaNumMedium)]:hover:!text-var-color-04
+                        [&>a:not(.font-IRANSansXFaNumMedium)]:transition-all ease-in-out duration-300
+                        [&>*]:leading-[56px]">
+                <a href="#" class="font-IRANSansXFaNumMedium !text-var-color-03">صفحه اصلی</a>
+                <div class="relative group">
+                    <!--- Has Sub --->
+                    <a href="#"
+                       class="!text-var-color-15 group-hover:!text-var-color-04 transition-all ease-in-out duration-300">فروشگاه</a>
+                    <!--- Submenu --->
+                    <div class="absolute top-full opacity-0 invisible group-hover:!opacity-100 group-hover:!visible transition-all
+                                w-52 !p-6 !space-y-4 text-base text-var-color-18 dark:text-var-color-01 bg-var-color-01 dark:bg-var-color-17
+                                rounded-2xl border-t-[3px] border-t-var-color-04 [&>*]:inline-block tracking-normal shadow-var-shadow-02
+                                [&>*]:hover:!text-var-color-04 [&>*]:transition-all ease-in-out duration-300 delay-75">
+                        <a href="#" class="">قهوه ویژه</a>
+                        <a href="#">ویژه در سطح جهانی</a>
+                        <a href="#">قهوه درجه یک</a>
+                        <a href="#">ترکیبات تجاری</a>
+                        <a href="#">کپسول قهوه</a>
+                        <a href="#">قهوه زینو برزیلی</a>
+                    </div>
+                </div>
+                <a href="#">دیکشنری</a>
+                <a href="#">بلاگ</a>
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+            </div>
+        </nav>
+        <!--- Cart, Theme Switcher (Drak-Light) & Authentication --->
+        <div class="flex gap-x-4 lg:gap-x-5">
+            <!--- Cart & Theme Switcher --->
+            <div class="flex items-center gap-x-4 !text-var-color-03">
+                <!--- Cart --->
+                <div class="relative group">
+                    <!--- Cart Icon --->
+                    <a href="" class="py-3">
+                        <svg class="w-8 h-8">
+                            <use href="#shopping-cart-icon"></use>
+                        </svg>
+                    </a>
+                    <!--- Cart Box --->
+                    <!--- data-scroll-box: برای اینکه به جاوا اسکریپت بگیم که این باکس برای تنظیمات اسکرول بار (کتابخانه) مد نظره --->
+                    <!--- این اتریبیوت رو تگی میدیم که بخوایم اسکرولبار رو براش تنظیم کنیم --->
+                    <!--- --rounded: برای اینکه به سی اس اس بگیم مقدار پدینگ بالا و پایین اسکرول بار (کتابخانه) رو مقدار بوردر ردیوس این باکس بگیر --->
+                    <div id="cart-box"
+                            {% comment %} data-scroll-box="scroll-box" {% endcomment %}
+                            {% comment %} style="--rounded: 1.5rem" {% endcomment %}
+                         class="absolute top-full opacity-0 invisible left-0 w-[360px] h-auto max-h-[474px] p-4
+                                group-hover:!opacity-100 group-hover:!visible transition-all text-var-color-18
+                                cursor-grab active:cursor-grabbing dark:text-var-color-01 bg-var-color-01
+                                dark:bg-var-color-17 overflow-y-auto border-t-[3px] border-t-var-color-04
+                                shadow-var-shadow-02 rounded-2xl delay-75 no-scrollbar">
+                        <!--- Cart Box Header --->
+                        <div class="flex justify-between items-center tracking-tighter mb-2">
+                            <span class="text-var-color-16 dark:!text-var-color-15 font-IRANSansXFaNumMedium text-xs">3 مورد</span>
+                            {% comment %} group/link ---> تعریف کلاس گروپ کاستم و دستی چون والد این لینک خودش کلاس گروپ رو داره {% endcomment %}
+                            <a href="#" class="group/link flex justify-end items-center !text-var-color-04">
+                                <span class="group-hover/link:!ml-[2px] transition-all ease-in-out duration-300 tracking-tightest">مشاهده سبد خرید</span>
+                                <div class="relative w-5 h-5">
+                                    <svg class="absolute w-full h-full top-0 left-[-4px] right-0">
+                                        <use href="#chevron-left-mini-icon"></use>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <!--- Cart Box Body --->
+                        <div class="!pb-2 border-b border-b-var-color-15 dark:border-b-var-color-02 divide-y
+                                                        divide-var-color-14 dark:divide-var-color-24 [&>*]:!py-4">
+                            <!--- Cart Box Body Item(s) --->
+                            <div class="flex flex-col justify-start items-center gap-y-1">
+                                <div class="flex flex-row justify-start items-center gap-x-1">
+                                    <img class="w-[120px] h-[120px]" src="{% static 'product/images/p1.png' %}"
+                                         alt="product">
+                                    <h4 class="font-DanaMedium text-var-color-18 dark:text-var-color-01 !text-base m-0">
+                                        قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی
+                                    </h4>
+                                </div>
+                                {% comment %} row-content-full ---> این کلاس برای این نوشته شده که اگه فرزندان المان داخل یک ردیف باشن {% endcomment %}
+                                {% comment %} و محتوای فرزندان کل ردیف رو اشغال کنن و رپ اتفاق بیفته، المان ها وسط چین بشن {% endcomment %}
+                                <div class="flex flex-row justify-between items-center flex-wrap-reverse w-full gap-x-1 gap-y-1 row-content-full">
+                                    <div class="flex flex-row justify-start items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold gap-x-1">
+                                        <span class="text-lg">175,000</span>
+                                        <span class="font-IRANSansXFaNumRegular text-base">تومان</span>
+                                    </div>
+                                    <div class="flex flex-row justify-end items-center gap-x-3">
+                                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-23
+                                                dark:hover:bg-var-color-36 rounded-sm cursor-pointer
+                                                transition-all ease-in-out duration-300">
+                                            <svg class="w-4 h-4 text-var-color-18 dark:text-var-color-01">
+                                                <use href="#plus-icon"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="text-var-color-18 dark:text-var-color-04 font-IRANSansXFaNumMedium text-lg">1</span>
+                                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-23
+                                                dark:hover:bg-var-color-36 rounded-sm cursor-pointer
+                                                transition-all ease-in-out duration-300">
+                                            <svg class="w-4 h-4 text-var-color-18 dark:text-var-color-01">
+                                                <use href="#minus-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-start items-center gap-y-1">
+                                <div class="flex flex-row justify-start items-center gap-x-1">
+                                    <img class="w-[120px] h-[120px]" src="{% static 'product/images/p2.png' %}"
+                                         alt="product">
+                                    <h4 class="font-DanaMedium text-var-color-18 dark:text-var-color-01 !text-base m-0">
+                                        قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی
+                                    </h4>
+                                </div>
+                                <div class="flex flex-row justify-between items-center flex-wrap-reverse w-full gap-x-1 gap-y-1 row-content-full">
+                                    <div class="flex flex-row justify-start items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold gap-x-1">
+                                        <span class="text-lg">175,000</span>
+                                        <span class="font-IRANSansXFaNumRegular text-base">تومان</span>
+                                    </div>
+                                    <div class="flex flex-row justify-end items-center gap-x-3">
+                                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-23
+                                                dark:hover:bg-var-color-36 rounded-sm cursor-pointer
+                                                transition-all ease-in-out duration-300">
+                                            <svg class="w-4 h-4 text-var-color-18 dark:text-var-color-01">
+                                                <use href="#plus-icon"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="text-var-color-18 dark:text-var-color-04 font-IRANSansXFaNumMedium text-lg">1</span>
+                                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-23
+                                                dark:hover:bg-var-color-36 rounded-sm cursor-pointer
+                                                transition-all ease-in-out duration-300">
+                                            <svg class="w-4 h-4 text-var-color-18 dark:text-var-color-01">
+                                                <use href="#minus-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-start items-center gap-y-1">
+                                <div class="flex flex-row justify-start items-center gap-x-1">
+                                    <img class="w-[120px] h-[120px]" src="{% static 'product/images/p3.png' %}"
+                                         alt="product">
+                                    <h4 class="font-DanaMedium text-var-color-18 dark:text-var-color-01 !text-base m-0">
+                                        قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی
+                                    </h4>
+                                </div>
+                                <div class="flex flex-row justify-between items-center flex-wrap-reverse w-full gap-x-1 gap-y-1 row-content-full">
+                                    <div class="flex flex-row justify-start items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold gap-x-1">
+                                        <span class="text-lg">175,000</span>
+                                        <span class="font-IRANSansXFaNumRegular text-base">تومان</span>
+                                    </div>
+                                    <div class="flex flex-row justify-end items-center gap-x-3">
+                                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-23
+                                                dark:hover:bg-var-color-36 rounded-sm cursor-pointer
+                                                transition-all ease-in-out duration-300">
+                                            <svg class="w-4 h-4 text-var-color-18 dark:text-var-color-01">
+                                                <use href="#plus-icon"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="text-var-color-18 dark:text-var-color-04 font-IRANSansXFaNumMedium text-lg">1</span>
+                                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-23
+                                                dark:hover:bg-var-color-36 rounded-sm cursor-pointer
+                                                transition-all ease-in-out duration-300">
+                                            <svg class="w-4 h-4 text-var-color-18 dark:text-var-color-01">
+                                                <use href="#minus-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- Cart Box Footer --->
+                        <div class="flex flex-col justify-start items-center gap-y-1">
+                            {% comment %} row-content-full ---> این کلاس برای این نوشته شده که اگه فرزندان المان داخل یک ردیف باشن {% endcomment %}
+                            {% comment %} و محتوای فرزندان کل ردیف رو اشغال کنن و رپ اتفاق بیفته، المان ها وسط چین بشن {% endcomment %}
+                            <div class="w-full flex flex-row justify-between items-center flex-wrap mt-2 gap-x-1 row-content-full">
+                                <span class="font-IRANSansXFaNumMedium text-var-color-16 dark:!text-var-color-15 tracking-tighter text-base">
+                                    مبلغ قابل پرداخت
+                                </span>
+                                <div class="flex flex-row justify-end items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold gap-x-1">
+                                    <span class="!font-IRANSansXFaNumDemiBold text-lg">350,000,000,000</span>
+                                    <span class="font-IRANSansXFaNumRegular tracking-tighter text-base">تومان</span>
+                                </div>
+                            </div>
+                            <div class="w-full flex flex-row justify-between items-center mt-1 gap-x-1">
+                                <a class="cart-box-vanish flex justify-center items-center w-1/2 h-[50px] rounded-[8px] tracking-tighter
+                                !text-var-color-01 bg-var-color-07 hover:bg-var-color-08 dark:bg-var-color-06
+                                dark:hover:bg-var-color-25 transition-all ease-in-out duration-300 !text-lg"
+                                   href="#">
+                                    ادامه خرید
+                                </a>
+                                <a class="cart-box-vanish flex justify-center items-center w-1/2 h-[50px] rounded-[8px] tracking-tighter
+                                !text-var-color-01 bg-var-color-32 hover:bg-var-color-33 dark:bg-var-color-32
+                                dark:hover:bg-var-color-33 transition-all ease-in-out duration-300 !text-lg"
+                                   href="#">
+                                    حذف سبد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- Empty Cart Box --->
+                    {#                    <div id="cart-box-empty" class="absolute top-full opacity-0 invisible left-0 w-[355px] h-auto !py-12#}
+                    {#                                                group-hover:!opacity-100 group-hover:!visible transition-all text-var-color-18#}
+                    {#                                                dark:text-var-color-01 bg-var-color-01 dark:bg-var-color-18 border-t-[3px]#}
+                    {#                                                border-t-var-color-04 shadow-var-shadow-01 rounded-2xl delay-75">#}
+                    {#                        <div class="flex flex-col justify-between items-center gap-y-8">#}
+                    {#                            <div class="flex flex-col justify-start items-center gap-y-2">#}
+                    {#                                <div class="w-14 h-14">#}
+                    {#                                    <img src="{% static 'images/empty-cart2.png' %}" alt="Empty Cart">#}
+                    {#                                </div>#}
+                    {#                                <span class="text-var-color-18 dark:text-var-color-01 !text-base">#}
+                    {#                                                        هنوز محصولی به سبد خرید اضافه نشده#}
+                    {#                                                    </span>#}
+                    {#                            </div>#}
+                    {#                            <a class="cart-box-vanish flex justify-center items-center w-[256px] h-12 rounded-xl tracking-tighter#}
+                    {#                                                        !text-var-color-01 bg-var-color-07 hover:bg-var-color-08 dark:bg-var-color-06#}
+                    {#                                                        dark:hover:bg-var-color-25 transition-all ease-in-out duration-300 !text-base"#}
+                    {#                               href="#">#}
+                    {#                                بازگشت به فروشگاه#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                </div>
+                <!--- Theme Switcher --->
+                <button class="btn-theme-switcher flex flex-col justify-start py-3">
+                    <svg class="inline-block dark:hidden w-8 h-8">
+                        <use href="#moon-icon"></use>
+                    </svg>
+                    <svg class="hidden dark:inline-block w-8 h-8">
+                        <use href="#sun-icon"></use>
+                    </svg>
+                </button>
+            </div>
+            <!--- Pipe --->
+            <span class="inline-block w-px h-14 bg-var-color-22"></span>
+            <!--- Authentication --->
+            <a href="" class="flex items-center text-xl !text-var-color-03 bg-transparent xl:!bg-var-color-28 xl:hover:!bg-var-color-27
+                                !pl-0 xl:!pl-8 !pr-0 xl:!pr-[26px] xl:rounded-3xl transition-all ease-in-out duration-300">
+                <svg class="w-8 h-8 !ml-1 hidden xl:inline-block rotate-180">
+                    <use href="#arrow-left-icon"></use>
+                </svg>
+                <svg class="w-8 h-8 !ml-1 inline-block xl:hidden">
+                    <use href="#arrow-right-icon"></use>
+                </svg>
+                <span class="!pb-[6px] m-0 hidden xl:inline-block">ورود</span>
+                <span class="w-[2px] h-6 bg-var-color-03 rounded !mx-2 hidden xl:inline-block"></span>
+                <span class="!pb-[3px] m-0 tracking-tightest hidden xl:inline-block">ثبت نام</span>
+            </a>
+        </div>
+    </section>
+</header>
+<!--- این تگ هدر برای حالت کوچکتر از دسکتاپ هست --->
+<header class="flex justify-between items-center md:hidden fixed top-0 left-0 right-0 z-10 px-4 h-13 xs:h-16 shadow-var-shadow-01 dark:shadow-var-shadow-03 bg-var-color-01 dark:bg-var-color-21 backdrop-blur-[6px]">
+    <!--- Burger Menu Icon --->
+    <svg id="burger-menu-icon" class="w-8 h-8 text-var-color-18 dark:text-white cursor-pointer">
+        <use href="#burger-icon"></use>
+    </svg>
+    <!--- Logo --->
+    <div class="shrink-0">
+        <img src="{% static 'icons/logo.png' %}" alt="Logo" class="h-9">
+    </div>
+    <!--- Shopping Cart --->
+    <button class="btn-cart">
+        <svg class="w-[30px] h-[30px] text-var-color-18 dark:text-white cursor-pointer">
+            <use href="#shopping-cart-icon"></use>
+        </svg>
+    </button>
+</header>
+<!--- Burger Menu Panel --->
+<section id="burger-menu-panel" class="fixed inset-0 top-0 bottom-0 right-0 md:hidden w-64 bg-var-color-14 dark:bg-var-color-18 text-var-color-18 dark:text-var-color-01 z-20 translate-x-full transition-all duration-300 ease-in-out overflow-x-hidden overflow-y-auto">
+    <!-- لایه داخلی برای اینکه محتوای داخل پنل اگه اسکرول لازم شدن، اسکرولبار بیاد سمت راست پنل قرار بگیره -->
+    <div class="w-full h-full" style="--rounded: 0" data-scroll-box="scroll-box" data-scrollbar-position="right">
+        {% comment %} در صورتی که بخوایم از اسکرولبار پیش فرض مرورگر استفاده کنیم و اسکرولبار راست به چپ بشه {% endcomment %}
+        {% comment %} dir="rtl" {% endcomment %}
+        <!--- Panel Header --->
+        <div class="flex flex-row justify-between items-center !pr-[5px] py-3 mx-3 mb-3 border-b border-b-var-color-31 dark:border-b-var-color-24">
+            <!--- Panel Logo --->
+            <div class="shrink-0">
+                <img src="{% static 'icons/logo.png' %}" alt="Logo" class="h-8">
+            </div>
+            <!--- Panel Close Icon --->
+            <svg id="close-burger-menu"
+                 class="w-5 h-5 text-var-color-18 dark:text-var-color-01 cursor-pointer hover:rotate-90 transition-all duration-300 ease-in-out">
+                <use href="#burger-panel-close-icon"></use>
+            </svg>
+        </div>
+        <!--- Panel Body --->
+        <div class="flex flex-col justify-start items-start !space-y-1 mx-3 text-var-color-18 dark:text-var-color-01">
+            <a href="#"
+               class="panel-body-item active-burger-menu-item w-full flex justify-start items-center gap-x-2 !p-[10px] rounded-md hover:!text-var-color-04 hover:bg-var-color-30 transition-all duration-300 ease-in-out">
+                <svg class="w-6 h-6">
+                    <use href="#burger-panel-home-icon"></use>
+                </svg>
+                <span class="">صفحه اصلی</span>
+            </a>
+            <div class="flex flex-col justify-start items-start w-full">
+                <a href="#"
+                   id="open-shopItem-submenu"
+                   class="panel-body-item flex justify-between items-center w-full !p-[10px] rounded-md hover:!text-var-color-04 hover:bg-var-color-30 transition-all duration-300 ease-in-out active:!text-var-color-04 active:bg-var-color-30">
+                    <div class="flex justify-start items-center gap-x-2">
+                        <svg class="w-6 h-6">
+                            <use href="#burger-panel-shop-icon"></use>
+                        </svg>
+                        <span class="">فروشگاه</span>
+                    </div>
+                    <svg id="shopItem-arrow-down" class="w-5 h-5">
+                        <use href="#chevron-down-mini-icon"></use>
+                    </svg>
+                </a>
+                <!--- Shop Item Sun Menu --->
+                <div id="shopItem-submenu"
+                     class="flex flex-col justify-start items-start w-full max-h-0 overflow-hidden !space-y-4 !mt-2 !pr-10 text-var-color-17 dark:text-var-color-31 transition-all duration-300 ease-in-out">
+                    <a href="#" class="shop-submenu-item hover:border-r border-r-var-color-04 !pr-1">قهوه ویژه</a>
+                    <a href="#" class="shop-submenu-item hover:border-r border-r-var-color-04 !pr-1">ویژه در سطح جهانی</a>
+                    <a href="#" class="shop-submenu-item hover:border-r border-r-var-color-04 !pr-1">قهوه درجه یک</a>
+                    <a href="#" class="shop-submenu-item hover:border-r border-r-var-color-04 !pr-1">ترکیبی تجاری</a>
+                    <a href="#" class="shop-submenu-item hover:border-r border-r-var-color-04 !pr-1">کپسول قهوه</a>
+                    <a href="#" class="shop-submenu-item hover:border-r border-r-var-color-04 !pr-1">قهوه زینو برزیلی</a>
+                </div>
+            </div>
+            <a href="#"
+               class="panel-body-item w-full flex justify-start items-center gap-x-2 !p-[10px] rounded-md hover:!text-var-color-04 hover:bg-var-color-30 transition-all duration-300 ease-in-out">
+                <svg class="w-6 h-6">
+                    <use href="#burger-panel-dictionary-icon"></use>
+                </svg>
+                <span class="">دیکشنری</span>
+            </a>
+            <a href="#"
+               class="panel-body-item w-full flex justify-start items-center gap-x-2 !p-[10px] rounded-md hover:!text-var-color-04 hover:bg-var-color-30 transition-all duration-300 ease-in-out">
+                <svg class="w-6 h-6">
+                    <use href="#burger-panel-blog-icon"></use>
+                </svg>
+                <span class="">بلاگ</span>
+            </a>
+            <a href="#"
+               class="panel-body-item w-full flex justify-start items-center gap-x-2 !p-[10px] rounded-md hover:!text-var-color-04 hover:bg-var-color-30 transition-all duration-300 ease-in-out">
+                <svg class="w-6 h-6">
+                    <use href="#burger-panel-info-icon"></use>
+                </svg>
+                <span class="">درباره ما</span>
+            </a>
+            <a href="#"
+               class="panel-body-item w-full flex justify-start items-center gap-x-2 !p-[10px] rounded-md hover:!text-var-color-04 hover:bg-var-color-30 transition-all duration-300 ease-in-out">
+                <svg class="w-6 h-6">
+                    <use href="#burger-panel-phone-icon"></use>
+                </svg>
+                <span class="">تماس با ما</span>
+            </a>
+        </div>
+        <!--- Panel Footer --->
+        <div class="text-var-color-04 !space-y-5 !py-6 !pr-2.5 !mt-4 mx-3 border-t border-t-var-color-31 dark:border-t-var-color-24">
+            <!--- Authentication --->
+            <a id="burger-menu-authentication" href="#"
+               class="inline-flex items-center gap-x-2 hover:!pr-2 transition-all duration-300 ease-in-out">
+                <svg class="w-6 h-6 rotate-180">
+                    <use href="#arrow-left-icon"></use>
+                </svg>
+                <span class="!pb-[6px] m-0">ورود</span>
+                <span class="w-[1px] h-5 bg-var-color-04 rounded"></span>
+                <span class="!pb-[3px] m-0 tracking-tightest">ثبت نام</span>
+            </a>
+            <!--- Cart --->
+            <button id="burger-menu-cart"
+                    class="btn-cart flex items-center gap-x-2 hover:!pr-2 transition-all duration-200 ease-in-out">
+                <svg class="w-6 h-6">
+                    <use href="#shopping-cart-icon"></use>
+                </svg>
+                <span class="">سبد خرید</span>
+            </button>
+            <!--- Theme Switcher --->
+            <button class="btn-theme-switcher flex items-center gap-x-2 hover:!pr-2 transition-all duration-300 ease-in-out">
+                <svg class="flex dark:hidden w-6 h-6">
+                    <use href="#moon-icon"></use>
+                </svg>
+                <span class="flex dark:hidden">تم تیره</span>
+                <svg class="hidden dark:flex w-6 h-6">
+                    <use href="#sun-icon"></use>
+                </svg>
+                <span class="hidden dark:flex">تم روشن</span>
+            </button>
+        </div>
+    </div>
+</section>
+<!--- Cart Panel --->
+<section id="cart-panel" class="fixed top-0 bottom-0 left-[-256px] md:hidden w-[256px] bg-var-color-14 dark:bg-var-color-18 text-var-color-18 dark:text-var-color-01 z-20 -translate-x-full transition-all duration-300 ease-in-out overflow-x-hidden overflow-y-auto">
+    <!-- لایه داخلی برای اینکه محتوای داخل پنل اگه اسکرول لازم شدن، اسکرولبار بیاد سمت چپ پنل قرار بگیره -->
+    <div class="w-full h-full px-4" style="--rounded: 0" data-scroll-box="scroll-box" data-scrollbar-position="left">
+        <!--- Panel Header --->
+        <div class="flex flex-row justify-between items-center !pr-[5px] !py-[21px] border-b border-b-var-color-31 dark:border-b-var-color-24 text-var-color-18 dark:text-var-color-01">
+            <!--- Panel Cart Close Icon --->
+            <svg id="close-panel-cart"
+                 class="w-5 h-5 cursor-pointer hover:rotate-90 transition-all duration-300 ease-in-out">
+                <use href="#burger-panel-close-icon"></use>
+            </svg>
+            <!--- Panel Header Text --->
+            <p class="!m-0 text-base">
+                سبد خرید
+            </p>
+        </div>
+        <!--- Panel Body --->
+        <div class="!pb-2 border-b border-b-var-color-15 dark:border-b-var-color-02 divide-y divide-var-color-31 dark:divide-var-color-24 [&>*]:!pt-3 [&>*]:!pb-[18px]">
+            <!--- Panel Body Item(s) --->
+            <div class="flex flex-col justify-start items-center gap-y-1">
+                <div class="flex flex-row justify-start items-center gap-x-1">
+                    <img class="w-[90px] h-[90px]" src="{% static 'product/images/p1.png' %}" alt="product">
+                    <h4 class="font-DanaMedium text-var-color-18 dark:text-var-color-01 !text-sm m-0 line-clamp-3">
+                        قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی
+                    </h4>
+                </div>
+                {% comment %} row-content-full ---> این کلاس برای این نوشته شده که اگه فرزندان المان داخل یک ردیف باشن {% endcomment %}
+                {% comment %} و محتوای فرزندان کل ردیف رو اشغال کنن و رپ اتفاق بیفته، المان ها وسط چین بشن {% endcomment %}
+                <div class="flex flex-row justify-between items-center flex-wrap-reverse w-full gap-x-1 gap-y-1 row-content-full">
+                    <div class="flex flex-row justify-start items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold text-sm gap-x-1">
+                        <span class="text-sm">175,000</span>
+                        <span class="font-IRANSansXFaNumRegular text-xs">تومان</span>
+                    </div>
+                    <div class="flex flex-row justify-end items-center gap-x-2">
+                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-15
+                                                    dark:hover:bg-var-color-01 rounded-sm cursor-pointer
+                                                    transition-all ease-in-out duration-300">
+                            <svg class="w-[14px] h-[14px] text-var-color-18 dark:text-var-color-18">
+                                <use href="#plus-icon"></use>
+                            </svg>
+                        </div>
+                        <span class="text-var-color-18 dark:text-var-color-04 font-IRANSansXFaNumMedium text-sm">1</span>
+                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-15
+                                                    dark:hover:bg-var-color-01 rounded-sm cursor-pointer
+                                                    transition-all ease-in-out duration-300">
+                            <svg class="w-[14px] h-[14px] text-var-color-18 dark:text-var-color-18">
+                                <use href="#minus-icon"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col justify-start items-center gap-y-1">
+                <div class="flex flex-row justify-start items-center gap-x-1">
+                    <img class="w-[90px] h-[90px]" src="{% static 'product/images/p2.png' %}" alt="product">
+                    <h4 class="font-DanaMedium text-var-color-18 dark:text-var-color-01 !text-sm m-0 line-clamp-3">
+                        قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی
+                    </h4>
+                </div>
+                <div class="flex flex-row justify-between items-center flex-wrap-reverse w-full gap-x-1 gap-y-1 row-content-full">
+                    <div class="flex flex-row justify-start items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold text-sm gap-x-1">
+                        <span class="text-sm">175,000</span>
+                        <span class="font-IRANSansXFaNumRegular text-xs">تومان</span>
+                    </div>
+                    <div class="flex flex-row justify-end items-center gap-x-2">
+                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-15
+                                                    dark:hover:bg-var-color-01 rounded-sm cursor-pointer
+                                                    transition-all ease-in-out duration-300">
+                            <svg class="w-[14px] h-[14px] text-var-color-18 dark:text-var-color-18">
+                                <use href="#plus-icon"></use>
+                            </svg>
+                        </div>
+                        <span class="text-var-color-18 dark:text-var-color-04 font-IRANSansXFaNumMedium text-sm">1</span>
+                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-15
+                                                    dark:hover:bg-var-color-01 rounded-sm cursor-pointer
+                                                    transition-all ease-in-out duration-300">
+                            <svg class="w-[14px] h-[14px] text-var-color-18 dark:text-var-color-18">
+                                <use href="#minus-icon"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col justify-start items-center gap-y-1">
+                <div class="flex flex-row justify-start items-center gap-x-1">
+                    <img class="w-[90px] h-[90px]" src="{% static 'product/images/p3.png' %}" alt="product">
+                    <h4 class="font-DanaMedium text-var-color-18 dark:text-var-color-01 !text-sm m-0 line-clamp-3">
+                        قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی
+                    </h4>
+                </div>
+                <div class="flex flex-row justify-between items-center flex-wrap-reverse w-full gap-x-1 gap-y-1 row-content-full">
+                    <div class="flex flex-row justify-start items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold text-sm gap-x-1">
+                        <span class="text-sm">175,000</span>
+                        <span class="font-IRANSansXFaNumRegular text-xs">تومان</span>
+                    </div>
+                    <div class="flex flex-row justify-end items-center gap-x-2">
+                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-15
+                                                    dark:hover:bg-var-color-01 rounded-sm cursor-pointer
+                                                    transition-all ease-in-out duration-300">
+                            <svg class="w-[14px] h-[14px] text-var-color-18 dark:text-var-color-18">
+                                <use href="#plus-icon"></use>
+                            </svg>
+                        </div>
+                        <span class="text-var-color-18 dark:text-var-color-04 font-IRANSansXFaNumMedium text-sm">1</span>
+                        <div class="p-1 bg-var-color-26 hover:bg-var-color-15 dark:bg-var-color-15
+                                                    dark:hover:bg-var-color-01 rounded-sm cursor-pointer
+                                                    transition-all ease-in-out duration-300">
+                            <svg class="w-[14px] h-[14px] text-var-color-18 dark:text-var-color-18">
+                                <use href="#minus-icon"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--- Panel Footer --->
+        <div class="flex flex-col justify-start items-center gap-y-1">
+            {% comment %} row-content-full ---> این کلاس برای این نوشته شده که اگه فرزندان المان داخل یک ردیف باشن {% endcomment %}
+            {% comment %} و محتوای فرزندان کل ردیف رو اشغال کنن و رپ اتفاق بیفته، المان ها وسط چین بشن {% endcomment %}
+            <div class="w-full flex flex-row justify-between items-center flex-wrap mt-1 gap-x-1 row-content-full">
+                <span class="font-IRANSansXFaNumMedium text-var-color-16 dark:!text-var-color-15 tracking-tighter text-xs">
+                    مبلغ قابل پرداخت
+                </span>
+                <div class="flex flex-row justify-end items-center text-var-color-18 dark:text-var-color-01 font-IRANSansXFaNumDemiBold gap-x-1">
+                    <span class="!font-IRANSansXFaNumDemiBold text-sm">350,000</span>
+                    <span class="font-IRANSansXFaNumRegular tracking-tighter text-xs">تومان</span>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between items-center w-full gap-x-1 mt-1 mb-4">
+                <a class="panel-cart-vanish flex justify-center items-center w-1/2 h-[36px] rounded-[8px] tracking-tighter
+                                    !text-var-color-01 bg-var-color-07 hover:bg-var-color-08 dark:bg-var-color-06
+                                    dark:hover:bg-var-color-25 transition-all ease-in-out duration-300 !text-[15px]"
+                   href="#">
+                    ادامه خرید
+                </a>
+                <a class="panel-cart-vanish flex justify-center items-center w-1/2 h-[36px] rounded-[8px] tracking-tighter
+                                    !text-var-color-01 bg-var-color-32 hover:bg-var-color-33 dark:bg-var-color-32
+                                    dark:hover:bg-var-color-33 transition-all ease-in-out duration-300 !text-[15px]"
+                   href="#">
+                    حذف سبد
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--- Empty Cart Panel --->
+    {#    <div class="h-full w-full px-4 flex flex-col justify-start items-center gap-y-4">#}
+    {#        <!--- Panel Header --->#}
+    {#        <div class="flex flex-row justify-between items-center w-full !pr-[5px] !py-[21px] border-b border-b-var-color-31 dark:border-b-var-color-02 text-var-color-18 dark:text-var-color-01">#}
+    {#            <!--- Panel Cart Close Icon --->#}
+    {#            <svg id="close-panel-cart"#}
+    {#                 class="w-5 h-5 cursor-pointer hover:rotate-90 transition-all duration-300 ease-in-out">#}
+    {#                <use href="#burger-panel-close-icon"></use>#}
+    {#            </svg>#}
+    {#            <!--- Panel Header Text --->#}
+    {#            <p class="!m-0 text-base">#}
+    {#                سبد خرید#}
+    {#            </p>#}
+    {#        </div>#}
+    {#        <!--- Panel body --->#}
+    {#        <div class="flex flex-col justify-start items-center gap-y-2">#}
+    {#            <div class="w-14 h-14">#}
+    {#                <img src="{% static 'images/empty-cart2.png' %}" alt="Empty Cart">#}
+    {#            </div>#}
+    {#            <span class="text-var-color-18 dark:text-var-color-01 !text-base">#}
+    {#                    سبد خرید شما خالی است.#}
+    {#                </span>#}
+    {#        </div>#}
+    {#        <!--- Panel Footer --->#}
+    {#        <a href="#" class="panel-cart-vanish flex justify-center items-center w-full h-11 !rounded-[10px] tracking-tighter#}
+    {#                                                            !text-var-color-01 bg-var-color-07 hover:bg-var-color-08 dark:bg-var-color-06#}
+    {#                                                            dark:hover:bg-var-color-25 transition-all ease-in-out duration-300 !text-base">#}
+    {#            بازگشت به فروشگاه#}
+    {#        </a>#}
+    {#    </div>#}
+</section>
+<!--- Overlay --->
+<div id="overlay" class="md:hidden fixed w-full h-full inset-0 bg-black opacity-0 invisible z-15 transition-opacity duration-300 ease-in-out"></div>

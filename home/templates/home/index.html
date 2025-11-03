@@ -1,0 +1,1510 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+{% endblock %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <!--- بنر اصلی --->
+    {% comment %} xs:aspect-[2/1] ---> نسبت عرض به ارتفاع المان {% endcomment %}
+    <section id="banner" class="relative h-[200px] 2xs:h-auto 2xs:aspect-[2/1] bg-home-banner-mobile md:bg-home-banner-desktop">
+        <!--- متن و دایره های اطراف منحنی پایین عکس --->
+        <div class="relative h-full md:min-h-screen flex flex-row justify-end items-end xs:items-center overflow-y-hidden">
+            <!--- متن داخل عکس --->
+            <div class="text-var-color-01 !pl-4 md:!pl-[10vw] lg:!pl-[17vw]">
+                {% comment %} text-6xl/[70px] ---> همزمان هم فونت سایز بگیر (6) هم فاصله تا خط بعدی (70) {% endcomment %}
+                <h2 class="font-MorabbaBold !text-lg xs:!text-2xl sm:!text-3xl md:!text-5xl/[60px] lg:!text-6xl/[70px] !mb-0 md:!mb-2 !mt-10">قهوه عربیکا تانزانیا</h2>
+                <span class="font-MorabbaLight text-base 3xs:text-lg 2xs:text-xl md:text-5xl">یک فنجان بالانس!</span>
+                <span class="block w-[100px] h-px md:h-0.5 bg-var-color-04 !my-1.5 2xs:!my-2 md:!my-8"></span>
+                <p class="max-w-[180px] 3xs:max-w-[200px] md:max-w-[460px] text-[10px] 3xs:text-xs md:text-2xl text-justify m-0 mb-2">
+                    قطعا نام آشنای عربیکا را
+                    <span class="tracking-tightest">شنیده اید</span>،
+                    عربیکا یکی از
+                    <span class="tracking-tightest">گونه های</span>
+                    قهوه است که در نواحی مختلف کمربند قهوه کشت
+                    <span class="tracking-tightest">می شود</span>.
+                </p>
+            </div>
+            <!--- دایره های اطراف منحنی پایین عکس --->
+            {% comment %} translate-y-2/4 ---> عنصر را به صورت عمودی به اندازهٔ نصف ارتفاع خودش به سمت پایین جابه‌جا می‌کند {% endcomment %}
+            <div class="absolute right-0 left-0 bottom-0 mx-auto translate-y-2/4 circle circle--lg">
+                <div class="circle circle--md">
+                    <div class="circle circle--sm"></div>
+                </div>
+            </div>
+        </div>
+        <!--- انحنای پایین عکس --->
+        <svg class="absolute right-0 left-0 bottom-0 mx-auto hidden md:inline-block text-var-color-14 dark:text-var-color-23 w-[100px] h-[22px]">
+            <use href="#home-curved-widget"></use>
+        </svg>
+        <!--- آیکون فلش پائین صفحه که داخل دایره قرار داره --->
+        <button id="go-to-footer" class="absolute right-0 left-0 bottom-[-15px] mx-auto hidden md:flex justify-center items-center w-[30px] h-[30px] border-2 !border-var-color-04 !rounded-full cursor-pointer">
+            <svg class="w-5 h-5 text-var-color-18 dark:text-var-color-01">
+                <use href="#chevron-down-mini-icon"></use>
+            </svg>
+        </button>
+    </section>
+    <!--- جدیدترین محصولات --->
+    <section id="products" class="bg-home-products custom-container">
+        <!--- عنوان --->
+        <div class="flex flex-row justify-between items-end !pt-6 md:!pt-10 lg:!pt-15 xl:!pt-25">
+            <div class="flex flex-col justify-center items-start">
+                <span class="text-lg 3xs:text-xl xs:text-2xl md:text-4xl lg:text-5xl font-MorabbaMedium text-var-color-18 dark:text-var-color-01">جدیدترین محصولات</span>
+                <span class="text-sm 3xs:text-md xs:text-lg md:text-2xl lg:text-3xl font-MorabbaLight text-var-color-18 dark:text-var-color-01 !mt-[2px] md:!mt-2">فرآوری شده از دانه قهوه</span>
+            </div>
+            <a href="#" class="flex flex-row justify-end items-center group">
+                <span class="hidden md:inline-block text-base md:text-lg lg:text-xl text-var-color-04 group-hover:!ml-[2px] transition-all ease-in-out duration-300">مشاهده همه محصولات</span>
+                <span class="inline-block md:hidden text-[13px] 3xs:text-sm xs:text-base md:text-xl text-var-color-04 group-hover:!ml-[2px] transition-all ease-in-out duration-300">مشاهده همه</span>
+                <div class="relative w-5 h-5">
+                    <svg class="absolute w-full h-full left-[-4px] text-xl text-var-color-04 tracking-tightest">
+                        <use href="#chevron-left-mini-icon"></use>
+                    </svg>
+                </div>
+            </a>
+        </div>
+        <!--- محصولات --->
+        {% comment %} [&>*] ---> همه فرزندان {% endcomment %}
+        <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-[12px] xm:gap-[20px] lg:gap-[30px] [&>*]:bg-var-color-01 dark:[&>*]:bg-var-color-18 [&>*]:shadow-var-shadow-01 [&>*]:rounded-2xl [&>*]:!p-2 3xs:[&>*]:!p-3 2xs:[&>*]:!p-3 xs:[&>*]:!p-4 md:[&>*]:!p-5 !pt-3 xs:!pt-6 md:!pt-12">
+            <!--- محصول تخفیف دار --->
+            <div class="flex flex-col justify-between items-center relative">
+                <!--- تخفیف --->
+                <span class="absolute left-0 top-7 flex justify-center items-center h-[18px] 2xs:h-[20px] xs:h-[25px] xm:h-[30px] text-[10px] 2xs:text-xs xs:text-sm xm:text-base font-IRANSansXFaNumDemiBold text-var-color-01 dark:text-var-color-18 !px-1 2xs:!px-[6px] xs:!px-[8px] xm:!px-[10px] !pt-[3px] rounded-tr-full rounded-br-full !bg-var-color-04">
+                    12%
+                </span>
+                <div class="flex flex-col justify-start items-center gap-y-3">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p1.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت و تخفیف --->
+                    <div class="flex flex-row justify-start items-center flex-wrap w-full gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px]">
+                        <div class="text-var-color-07 dark:text-var-color-05">
+                            <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl">154,000,000</span>
+                            <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm 2xl:!text-xl tracking-tighter">تومان</span>
+                        </div>
+                        <div class="offer">
+                            <span class="!text-[10px] 2xs:!text-xs xs:!text-sm sm:!text-xs xm:!text-sm lg:!text-base 2xl:!text-xl">175,000,000</span>
+                            <span class="hidden xs:inline-block sm:hidden md:inline-block text-xs md:text-[10px] lg:text-xs 2xl:!text-xl tracking-tighter">تومان</span>
+                        </div>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول بدون تخفیف --->
+            <div class="flex flex-col justify-between items-center">
+                <div class="flex flex-col justify-start items-center gap-y-3">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p2.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت --->
+                    <div class="flex flex-row justify-start items-center w-full text-var-color-07 dark:text-var-color-05 gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px] !mt-[6px] 2xs:!mt-0">
+                        <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl">154,000,000</span>
+                        <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm 2xl:!text-xl tracking-tighter">تومان</span>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول عدم موجودی --->
+            <div class="flex flex-col justify-between items-center">
+                <div class="flex flex-col justify-start items-center gap-y-1">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center !mb-2 md:!mb-3">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p3.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start !mb-0 2xs:!mb-1 md:!mb-2">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت --->
+                    <div class="flex flex-row justify-start items-center w-full text-var-color-20 !mt-4 2xs:!mt-[10px] md:!mt-0">
+                        <span class="!text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl tracking-tighter">فعلا موجود نیست</span>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول تخفیف دار --->
+            <div class="flex flex-col justify-between items-center relative">
+                <!--- تخفیف --->
+                <span class="absolute left-0 top-7 flex justify-center items-center h-[18px] 2xs:h-[20px] xs:h-[25px] xm:h-[30px] text-[10px] 2xs:text-xs xs:text-sm xm:text-base font-IRANSansXFaNumDemiBold text-var-color-01 dark:text-var-color-18 !px-1 2xs:!px-[6px] xs:!px-[8px] xm:!px-[10px] !pt-[3px] rounded-tr-full rounded-br-full !bg-var-color-04">
+                            25%
+                        </span>
+                <div class="flex flex-col justify-start items-center gap-y-3">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p4.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت و تخفیف --->
+                    <div class="flex flex-row justify-start items-center flex-wrap w-full gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px]">
+                        <div class="text-var-color-07 dark:text-var-color-05">
+                            <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl">154,000,000</span>
+                            <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm 2xl:!text-xl tracking-tighter">تومان</span>
+                        </div>
+                        <div class="offer">
+                            <span class="!text-[10px] 2xs:!text-xs xs:!text-sm sm:!text-xs xm:!text-sm lg:!text-base 2xl:!text-xl">175,000,000</span>
+                            <span class="hidden xs:inline-block sm:hidden md:inline-block text-xs md:text-[10px] lg:text-xs 2xl:!text-xl tracking-tighter">تومان</span>
+                        </div>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول بدون تخفیف --->
+            <div class="flex flex-col justify-between items-center">
+                <div class="flex flex-col justify-start items-center gap-y-3">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p5.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت --->
+                    <div class="flex flex-row justify-start items-center w-full text-var-color-07 dark:text-var-color-05 gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px] !mt-[6px] 2xs:!mt-0">
+                        <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl">154,000,000</span>
+                        <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm 2xl:!text-xl tracking-tighter">تومان</span>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول عدم موجودی --->
+            <div class="flex flex-col justify-between items-center">
+                <div class="flex flex-col justify-start items-center gap-y-1">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center !mb-2 md:!mb-3">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p6.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start !mb-0 2xs:!mb-1 md:!mb-2">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت --->
+                    <div class="flex flex-row justify-start items-center w-full text-var-color-20 !mt-4 2xs:!mt-[10px] md:!mt-0">
+                        <span class="!text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl tracking-tighter">فعلا موجود نیست</span>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول تخفیف دار --->
+            <div class="flex flex-col justify-between items-center relative">
+                <!--- تخفیف --->
+                <span class="absolute left-0 top-7 flex justify-center items-center h-[18px] 2xs:h-[20px] xs:h-[25px] xm:h-[30px] text-[10px] 2xs:text-xs xs:text-sm xm:text-base font-IRANSansXFaNumDemiBold text-var-color-01 dark:text-var-color-18 !px-1 2xs:!px-[6px] xs:!px-[8px] xm:!px-[10px] !pt-[3px] rounded-tr-full rounded-br-full !bg-var-color-04">
+                            20%
+                        </span>
+                <div class="flex flex-col justify-start items-center gap-y-3">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p7.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت و تخفیف --->
+                    <div class="flex flex-row justify-start items-center flex-wrap w-full gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px]">
+                        <div class="text-var-color-07 dark:text-var-color-05">
+                            <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl">154,000,000</span>
+                            <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm 2xl:!text-xl tracking-tighter">تومان</span>
+                        </div>
+                        <div class="offer">
+                            <span class="!text-[10px] 2xs:!text-xs xs:!text-sm sm:!text-xs xm:!text-sm lg:!text-base 2xl:!text-xl">175,000,000</span>
+                            <span class="hidden xs:inline-block sm:hidden md:inline-block text-xs md:text-[10px] lg:text-xs 2xl:!text-xl tracking-tighter">تومان</span>
+                        </div>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!--- محصول عدم موجودی --->
+            <div class="flex flex-col justify-between items-center">
+                <div class="flex flex-col justify-start items-center gap-y-1">
+                    <!--- عکس --->
+                    <a href="#" class="flex justify-center items-center !mb-2 md:!mb-3">
+                        <img class="w-auto mx-auto" src="{% static 'product/images/p8.png' %}" alt="Product">
+                    </a>
+                    <!--- توضیحات --->
+                    <a href="#" class="flex flex-col justify-start items-start !mb-0 2xs:!mb-1 md:!mb-2">
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                            قهوه ترک بن مانو مقدار 250 گرم
+                        </h5>
+                        <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                            تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                        </h5>
+                    </a>
+                    <!--- قیمت --->
+                    <div class="flex flex-row justify-start items-center w-full text-var-color-20 !mt-4 2xs:!mt-[10px] md:!mt-0">
+                        <span class="!text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg 2xl:!text-xl tracking-tighter">فعلا موجود نیست</span>
+                    </div>
+                </div>
+                <!--- فوتر --->
+                <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                    <!--- سبد خرید --->
+                    <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                <use href="#shopping-cart-icon"></use>
+                            </svg>
+                        </button>
+                        <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                            <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                <use href="#arrows-right-left"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--- امتیاز --->
+                    <div class="flex flex-row justify-end items-center text-var-color-19">
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                            <use href="#star"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--- بنر تبلیغاتی --->
+    <section id="advertising-banner" class="!mt-8 2xs:!mt-10 xs:!mt-15 sm:!mt-20 custom-container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-[15px] 2xs:gap-[20px] text-var-color-01">
+            <a href="#" class="flex flex-col justify-start items-start h-[140px] 2xs:h-[180px] md:h-[190px] xm:h-[220px] xl:h-[248px] rounded-2xl !pt-6 2xs:!pt-8 xm:!pt-12 xl:!pt-18 !pr-8 2xs:!pr-10 xm:!pr-12 advertising-banner--item1">
+                <span class="font-DanaDemiBold !text-lg 2xs:!text-xl xs:!text-2xl xm:!text-3xl !mb-1 2xs:!mb-2 xm:!mb-4">انواع قهوه</span>
+                <span class="md:font-IRANSansXFaNumMedium text-sm 2xs:text-base xs:text-lg xm:text-xl">عربیکا، ترکیبی و برزیلی</span>
+            </a>
+            <a href="#" class="flex flex-col justify-start items-start h-[140px] 2xs:h-[180px] md:h-[190px] xm:h-[220px] xl:h-[248px] rounded-2xl !pt-6 2xs:!pt-8 xm:!pt-12 xl:!pt-18 !pr-8 2xs:!pr-10 xm:!pr-12 advertising-banner--item2">
+                <span class="font-DanaDemiBold !text-lg 2xs:!text-xl xs:!text-2xl xm:!text-3xl !mb-1 2xs:!mb-2 xm:!mb-4">پودرهای فوری</span>
+                <span class="md:font-IRANSansXFaNumMedium text-sm 2xs:text-base xs:text-lg xm:text-xl">نسکافه، هات چاکلت و ماسالا</span>
+            </a>
+        </div>
+    </section>
+    <!--- دسته بندی محصولات --->
+    <section id="products-category" class="!mt-6 2xs:!mt-10 sm:!mt-15 xm:!mt-20 custom-container">
+        {% comment %} تا عرض 896 پیکسل چینش آیتم ها به صورت گرید هست و از اونجا به بعد با فلکس و تغییر عرض و ارتفاع هر آیتم، چینش آیتم ها مدیریت میشن {% endcomment %}
+        {% comment %} items-start ---> چون از فلکس و گرید همزمان استفاده کردیم این دستور باعث میشه وقتی متن به خط دوم رپ کنه، به عکس فشار رو به بالا نیاد و آیتم ها الاینشون بهم نریزه {% endcomment %}
+        <div class="flex justify-center items-start flex-wrap xm:grid grid-cols-3 xm:grid-cols-5 gap-x-4 sm:gap-x-10 xm:gap-x-4 xl:gap-x-6 2xl:gap-x-10 !gap-y-14 3xs:!gap-y-16 2xs:!gap-y-18 sm:!gap-y-20 md:!gap-y-24">
+            <a href="#" class="flex flex-col items-center !w-18 !h-18 2xs:!w-25 2xs:!h-25 xs:!w-30 xs:!h-30 sm:!w-40 sm:!h-40 xm:!w-auto xm:!h-auto">
+                <img src="{% static 'product/images/category1.png' %}" alt="category">
+                <span class="font-DanaDemiBold text-xs 2xs:text-sm md:text-xl text-var-color-18 dark:text-var-color-01 text-center">قهوه دمی و اسپرسو</span>
+            </a>
+            <a href="#" class="flex flex-col items-center !w-18 !h-18 2xs:!w-25 2xs:!h-25 xs:!w-30 xs:!h-30 sm:!w-40 sm:!h-40 xm:!w-auto xm:!h-auto">
+                <img src="{% static 'product/images/category2.png' %}" alt="category">
+                <span class="font-DanaDemiBold text-xs 2xs:text-sm md:text-xl text-var-color-18 dark:text-var-color-01 text-center">لوازم جانبی و تجهیزات</span>
+            </a>
+            <a href="#" class="flex flex-col items-center !w-18 !h-18 2xs:!w-25 2xs:!h-25 xs:!w-30 xs:!h-30 sm:!w-40 sm:!h-40 xm:!w-auto xm:!h-auto">
+                <img src="{% static 'product/images/category3.png' %}" alt="category">
+                <span class="font-DanaDemiBold text-xs 2xs:text-sm md:text-xl text-var-color-18 dark:text-var-color-01 text-center">اسپرسوساز</span>
+            </a>
+            <a href="#" class="flex flex-col items-center !w-18 !h-18 2xs:!w-25 2xs:!h-25 xs:!w-30 xs:!h-30 sm:!w-40 sm:!h-40 xm:!w-auto xm:!h-auto">
+                <img src="{% static 'product/images/category4.png' %}" alt="category">
+                <span class="font-DanaDemiBold text-xs 2xs:text-sm md:text-xl text-var-color-18 dark:text-var-color-01 text-center">پک تستر قهوه</span>
+            </a>
+            <a href="#" class="flex flex-col items-center !w-18 !h-18 2xs:!w-25 2xs:!h-25 xs:!w-30 xs:!h-30 sm:!w-40 sm:!h-40 xm:!w-auto xm:!h-auto">
+                <img src="{% static 'product/images/category5.png' %}" alt="category">
+                <span class="font-DanaDemiBold text-xs 2xs:text-sm md:text-xl text-var-color-18 dark:text-var-color-01 text-center">قهوه ترک</span>
+            </a>
+        </div>
+    </section>
+    <!--- پرفروش ترین محصولات --->
+    <section id="best-selling-products" class="!mt-12 2xs:!mt-15 sm:!mt-20 md:!mt-25 xm:!mt-18 lg:!mt-20 xl:!mt-25 custom-container">
+        <!--- عنوان --->
+        <div class="flex flex-row justify-between items-end">
+            <div class="flex flex-col justify-center items-start">
+                <span class="text-lg 3xs:text-xl xs:text-2xl md:text-4xl lg:text-5xl font-MorabbaMedium text-var-color-18 dark:text-var-color-01">محصولات پرفروش</span>
+                <span class="text-sm 3xs:text-md xs:text-lg md:text-2xl lg:text-3xl font-MorabbaLight text-var-color-18 dark:text-var-color-01 !mt-[2px] md:!mt-2">پیشنهاد قهوه خورها...</span>
+            </div>
+            <div class="flex flex-row justify-between items-center gap-x-2 2xs:gap-x-3">
+                <div class="swiper-button-next-custom">
+                    <svg class="w-[18px] h-[18px] 2xs:w-[22px] 2xs:h-[22px] md:w-[26px] md:h-[26px]">
+                        <use href="#chevron-right-mini-icon"></use>
+                    </svg>
+                </div>
+                <div class="swiper-button-prev-custom">
+                    <svg class="w-[18px] h-[18px] 2xs:w-[22px] 2xs:h-[22px] md:w-[26px] md:h-[26px]">
+                        <use href="#chevron-left-mini-icon"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!--- محصولات به صورت اسلایدر --->
+        <div class="swiper !pt-3 xs:!pt-6 md:!pt-12">
+            {% comment %} [&>*>*] ---> دسترسی به همه فرزندان سطح دو یعنی فرزند فرزند {% endcomment %}
+            <div class="swiper-wrapper [&>*>*]:bg-var-color-01 dark:[&>*>*]:bg-var-color-18 [&>*>*]:shadow-var-shadow-01 [&>*>*]:rounded-2xl [&>*>*]:!p-2 3xs:[&>*>*]:!p-3 2xs:[&>*>*]:!p-3 xs:[&>*>*]:!p-4 md:[&>*>*]:!p-5 [&>*>*]:h-full">
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول تخفیف دار --->
+                    <div class="flex flex-col justify-between items-center relative">
+                        <!--- تخفیف --->
+                        <span class="absolute left-0 top-7 flex justify-center items-center h-[18px] 2xs:h-[20px] xs:h-[25px] xm:h-[30px] text-[10px] 2xs:text-xs xs:text-sm xm:text-base font-IRANSansXFaNumDemiBold text-var-color-01 dark:text-var-color-18 !px-1 2xs:!px-[6px] xs:!px-[8px] xm:!px-[10px] !pt-[3px] rounded-tr-full rounded-br-full !bg-var-color-04">
+                        12%
+                    </span>
+                        <div class="flex flex-col justify-start items-center gap-y-3">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p1.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت و تخفیف --->
+                            <div class="flex flex-row justify-start items-center flex-wrap w-full gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px]">
+                                <div class="text-var-color-07 dark:text-var-color-05">
+                                    <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg">154,000,000</span>
+                                    <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm tracking-tighter">تومان</span>
+                                </div>
+                                <div class="offer">
+                                    <span class="!text-[10px] 2xs:!text-xs xs:!text-sm sm:!text-xs xm:!text-sm lg:!text-base">175,000,000</span>
+                                    <span class="hidden xs:inline-block sm:hidden md:inline-block text-xs md:text-[10px] lg:text-xs tracking-tighter">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول بدون تخفیف --->
+                    <div class="flex flex-col justify-between items-center">
+                        <div class="flex flex-col justify-start items-center gap-y-3">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p2.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت --->
+                            <div class="flex flex-row justify-start items-center w-full text-var-color-07 dark:text-var-color-05 gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px] !mt-[6px] 2xs:!mt-0">
+                                <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg">154,000,000</span>
+                                <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm tracking-tighter">تومان</span>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول عدم موجودی --->
+                    <div class="flex flex-col justify-between items-center">
+                        <div class="flex flex-col justify-start items-center gap-y-1">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center !mb-2 md:!mb-3">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p3.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start !mb-0 2xs:!mb-1 md:!mb-2">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت --->
+                            <div class="flex flex-row justify-start items-center w-full text-var-color-20 !mt-4 2xs:!mt-[10px] md:!mt-0">
+                                <span class="!text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg tracking-tighter">فعلا موجود نیست</span>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول تخفیف دار --->
+                    <div class="flex flex-col justify-between items-center relative">
+                        <!--- تخفیف --->
+                        <span class="absolute left-0 top-7 flex justify-center items-center h-[18px] 2xs:h-[20px] xs:h-[25px] xm:h-[30px] text-[10px] 2xs:text-xs xs:text-sm xm:text-base font-IRANSansXFaNumDemiBold text-var-color-01 dark:text-var-color-18 !px-1 2xs:!px-[6px] xs:!px-[8px] xm:!px-[10px] !pt-[3px] rounded-tr-full rounded-br-full !bg-var-color-04">
+                            25%
+                        </span>
+                        <div class="flex flex-col justify-start items-center gap-y-3">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p4.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت و تخفیف --->
+                            <div class="flex flex-row justify-start items-center flex-wrap w-full gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px]">
+                                <div class="text-var-color-07 dark:text-var-color-05">
+                                    <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg">154,000,000</span>
+                                    <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm tracking-tighter">تومان</span>
+                                </div>
+                                <div class="offer">
+                                    <span class="!text-[10px] 2xs:!text-xs xs:!text-sm sm:!text-xs xm:!text-sm lg:!text-base">175,000,000</span>
+                                    <span class="hidden xs:inline-block sm:hidden md:inline-block text-xs md:text-[10px] lg:text-xs tracking-tighter">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول بدون تخفیف --->
+                    <div class="flex flex-col justify-between items-center">
+                        <div class="flex flex-col justify-start items-center gap-y-3">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p5.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت --->
+                            <div class="flex flex-row justify-start items-center w-full text-var-color-07 dark:text-var-color-05 gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px] !mt-[6px] 2xs:!mt-0">
+                                <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg">154,000,000</span>
+                                <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm tracking-tighter">تومان</span>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول عدم موجودی --->
+                    <div class="flex flex-col justify-between items-center">
+                        <div class="flex flex-col justify-start items-center gap-y-1">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center !mb-2 md:!mb-3">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p6.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start !mb-0 2xs:!mb-1 md:!mb-2">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت --->
+                            <div class="flex flex-row justify-start items-center w-full text-var-color-20 !mt-4 2xs:!mt-[10px] md:!mt-0">
+                                <span class="!text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg tracking-tighter">فعلا موجود نیست</span>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول تخفیف دار --->
+                    <div class="flex flex-col justify-between items-center relative">
+                        <!--- تخفیف --->
+                        <span class="absolute left-0 top-7 flex justify-center items-center h-[18px] 2xs:h-[20px] xs:h-[25px] xm:h-[30px] text-[10px] 2xs:text-xs xs:text-sm xm:text-base font-IRANSansXFaNumDemiBold text-var-color-01 dark:text-var-color-18 !px-1 2xs:!px-[6px] xs:!px-[8px] xm:!px-[10px] !pt-[3px] rounded-tr-full rounded-br-full !bg-var-color-04">
+                            20%
+                        </span>
+                        <div class="flex flex-col justify-start items-center gap-y-3">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p7.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت و تخفیف --->
+                            <div class="flex flex-row justify-start items-center flex-wrap w-full gap-x-[4px] xs:gap-x-[6px] sm:gap-x-[4px] xm:gap-x-[6px]">
+                                <div class="text-var-color-07 dark:text-var-color-05">
+                                    <span class="font-IRANSansXFaNumDemiBold !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg">154,000,000</span>
+                                    <span class="!text-[8px] 2xs:!text-[10px] xs:!text-xs sm:!text-[10px] xm:!text-xs lg:!text-sm tracking-tighter">تومان</span>
+                                </div>
+                                <div class="offer">
+                                    <span class="!text-[10px] 2xs:!text-xs xs:!text-sm sm:!text-xs xm:!text-sm lg:!text-base">175,000,000</span>
+                                    <span class="hidden xs:inline-block sm:hidden md:inline-block text-xs md:text-[10px] lg:text-xs tracking-tighter">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6 text-var-color-15 dark:text-var-color-16">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide !h-auto">
+                    <!--- محصول عدم موجودی --->
+                    <div class="flex flex-col justify-between items-center">
+                        <div class="flex flex-col justify-start items-center gap-y-1">
+                            <!--- عکس --->
+                            <a href="#" class="flex justify-center items-center !mb-2 md:!mb-3">
+                                <img class="w-auto mx-auto" src="{% static 'product/images/p8.png' %}" alt="Product">
+                            </a>
+                            <!--- توضیحات --->
+                            <a href="#" class="flex flex-col justify-start items-start !mb-0 2xs:!mb-1 md:!mb-2">
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1">
+                                    قهوه ترک بن مانو مقدار 250 گرم
+                                </h5>
+                                <h5 class="font-DanaMedium !text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg !text-var-color-18 dark:!text-var-color-01 line-clamp-1 !mb-1 2xs:!mb-auto">
+                                    تهیه شده از بهترین مواد تشکیل دهنده قهوه
+                                </h5>
+                            </a>
+                            <!--- قیمت --->
+                            <div class="flex flex-row justify-start items-center w-full text-var-color-20 !mt-4 2xs:!mt-[10px] md:!mt-0">
+                                <span class="!text-xs 2xs:!text-sm xs:!text-base sm:!text-sm xm:!text-base lg:!text-lg tracking-tighter">فعلا موجود نیست</span>
+                            </div>
+                        </div>
+                        <!--- فوتر --->
+                        <div class="flex flex-row justify-between items-center w-full !mt-2 2xs:!mt-3 2xl:!mt-5">
+                            <!--- سبد خرید --->
+                            <div class="flex flex-row justify-start items-center gap-x-0.5 md:gap-x-0 xm:gap-x-1 2xl:gap-x-2">
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 bg-var-color-14 hover:bg-var-color-07 dark:bg-var-color-23 dark:hover:bg-var-color-05 text-var-color-16 hover:text-var-color-01 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 xm:w-[22px] xm:h-[22px]">
+                                        <use href="#shopping-cart-icon"></use>
+                                    </svg>
+                                </button>
+                                <button class="flex-center w-[22px] h-[22px] 2xs:w-[26px] 2xs:h-[26px] xs:w-8 xs:h-8 sm:w-7 sm:h-7 md:w-8 md:h-8 xm:w-9 xm:h-9 text-var-color-16 hover:text-var-color-07 dark:hover:text-var-color-05 !rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                                    <svg class="w-[14px] h-[14px] 2xs:w-[18px] 2xs:h-[18px] xs:w-[22px] xs:h-[22px] sm:w-[20px] sm:h-[20px] md:w-[22px] md:h-[22px] xm:w-6 xm:h-6">
+                                        <use href="#arrows-right-left"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!--- امتیاز --->
+                            <div class="flex flex-row justify-end items-center text-var-color-19">
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                                <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 xm:w-6 xm:h-6 xl:w-[21px] xl:h-[21px] 2xl:w-6 2xl:h-6">
+                                    <use href="#star"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--- کافه کلاب --->
+    <section id="coffee-club" class="!mt-8 2xs:!mt-10 xs:!mt-15 md:!mt-20 custom-container">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center lg:!h-32 xl:!h-36 !py-[10px] 2xs:!py-3 xs:!py-5 sm:!py-8 lg:!py-0 !px-[9px] 2xs:!px-3 xs:!px-5 sm:!px-8 lg:!px-4 xl:!px-11 bg-gradient-to-r from-var-color-05 to-var-color-06 text-var-color-01 rounded-2xl gap-y-3 2xs:gap-y-4 xs:gap-y-8">
+            <!--- عنوان --->
+            <div class="flex flex-row justify-start items-center gap-x-[6px] 2xs:gap-x-2 xs:gap-x-3 2xl:gap-x-6">
+                <img class="w-[45px] 2xs:w-[70px] xs:w-[80px] sm:w-[95px] lg:w-[87px] xl:w-[110px]" src="{% static 'home/images/diamond.png' %}" alt="club">
+                <div class="flex flex-col justify-center items-start gap-y-0 xl:gap-y-2">
+                    <h4 class="font-MorabbaBold !text-lg 2xs:!text-xl xs:!text-2xl sm:!text-4xl lg:!text-2xl xl:!text-4xl 2xl:!text-5xl m-0 2xs:m-auto">کافی کلاب</h4>
+                    <span class="font-MorabbaLight !text-[11px] 2xs:!text-sm xs:!text-lg sm:!text-xl lg:!text-lg xl:!text-xl 2xl:!text-2xl">میدونستی میتونی با امتیاز هات قهوه بگیری ؟</span>
+                </div>
+            </div>
+            <!--- کاردها و امتیاز شما --->
+            <div class="flex flex-row justify-between items-center w-full lg:w-auto h-[52px] 2xs:h-[70px] xs:h-[80px] sm:h-[98px] lg:h-[90px] xl:h-[98px] gap-x-1 2xs:gap-x-3 xl:gap-x-6 2xl:gap-x-30">
+                <!--- کاردها --->
+                <div class="flex-center h-full gap-x-[3px] 2xs:gap-x-[6px] sm:gap-x-5 lg:gap-x-2 xl:gap-x-3 2xl:gap-x-5">
+                    <div class="flex flex-col justify-between items-center w-[52px] h-full 2xs:w-[70px] 2xs:h-full xs:w-[80px] xs:h-full sm:w-[98px] sm:h-full lg:w-[90px] lg:h-full xl:w-[98px] xl:h-full !pt-2 2xs:!pt-3 xs:!pt-3.5 !pb-0.5 2xs:!pb-1 xs:!pb-1.5 bg-var-color-01 text-var-color-06 rounded-xl 2xs:rounded-2xl">
+                        <svg class="w-6 h-6 2xs:w-8 2xs:h-8 xs:w-9 xs:h-9 sm:w-12 sm:h-12 lg:w-10 lg:h-10 xl:w-12 xl:h-12">
+                            <use href="#compass"></use>
+                        </svg>
+                        <span class="font-DanaRegular text-[8px] 2xs:text-[10px] xs:text-xs sm:text-sm lg:text-xs xl:text-sm">چرخ و بخت</span>
+                    </div>
+                    <div class="flex flex-col justify-between items-center w-[52px] h-full 2xs:w-[70px] 2xs:h-full xs:w-[80px] xs:h-full sm:w-[98px] sm:h-full lg:w-[90px] lg:h-full xl:w-[98px] xl:h-full !pt-2 2xs:!pt-3 xs:!pt-3.5 !pb-0.5 2xs:!pb-1 xs:!pb-1.5 bg-var-color-01 text-var-color-06 rounded-xl 2xs:rounded-2xl">
+                        <svg class="w-6 h-6 2xs:w-8 2xs:h-8 xs:w-9 xs:h-9 sm:w-12 sm:h-12 lg:w-10 lg:h-10 xl:w-12 xl:h-12">
+                            <use href="#discovery"></use>
+                        </svg>
+                        <span class="font-DanaRegular text-[8px] 2xs:text-[10px] xs:text-xs sm:text-sm lg:text-xs xl:text-sm">ماموریت ها</span>
+                    </div>
+                    <div class="flex flex-col justify-between items-center w-[52px] h-full 2xs:w-[70px] 2xs:h-full xs:w-[80px] xs:h-full sm:w-[98px] sm:h-full lg:w-[90px] lg:h-full xl:w-[98px] xl:h-full !pt-2 2xs:!pt-3 xs:!pt-3.5 !pb-0.5 2xs:!pb-1 xs:!pb-1.5 bg-var-color-01 text-var-color-06 rounded-xl 2xs:rounded-2xl">
+                        <svg class="w-6 h-6 2xs:w-8 2xs:h-8 xs:w-9 xs:h-9 sm:w-12 sm:h-12 lg:w-10 lg:h-10 xl:w-12 xl:h-12">
+                            <use href="#ticket-star"></use>
+                        </svg>
+                        <span class="font-DanaRegular text-[8px] 2xs:text-[10px] xs:text-xs sm:text-sm lg:text-xs xl:text-sm">جایزه ها</span>
+                    </div>
+                </div>
+                <!--- امتیاز شما --->
+                <div class="flex flex-col justify-center items-center h-full">
+                    <span class="font-DanaDemiBold text-sm 2xs:text-xl xs:text-2xl sm:text-3xl lg:text-2xl xl:text-3xl !mt-0 xs:!mt-2">542</span>
+                    <span class="font-DanaMedium text-[8px] 2xs:text-[10px] xs:text-xs sm:text-sm lg:text-xs xl:text-sm">امتیـــــــاز شما</span>
+                    <a href="#" class="flex-center h-[30px] xs:h-[28px] sm:h-8 lg:h-[26px] xl:h-8 rounded-full bg-gradient-to-r from-var-color-03 to-var-color-04 text-var-color-01 !pl-1 !pr-2 2xs:!pr-3">
+                        <span class="font-DanaMedium text-[9px] 2xs:text-[10px] xs:text-xs sm:text-sm lg:text-xs xl:text-sm !mt-0.5">دریافت جایزه</span>
+                        <svg class="w-3 h-3 2xs:w-4 2xs:h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6">
+                            <use href="#chevron-left-mini-icon"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--- مطالب خواندنی --->
+    <section id="blog" class="!mt-8 2xs:!mt-12 sm:!mt-16 md:!mt-20 xl:!mt-25 custom-container">
+        <!--- عنوان --->
+        <div class="flex flex-row justify-between items-end">
+            <span class="text-lg 3xs:text-xl xs:text-2xl md:text-4xl lg:text-5xl font-MorabbaMedium text-var-color-18 dark:text-var-color-01">مطالب خواندنی</span>
+            <a href="#" class="flex flex-row justify-end items-center group">
+                <span class="hidden md:inline-block text-base md:text-lg lg:text-xl text-var-color-04 group-hover:!ml-[2px] transition-all ease-in-out duration-300">مشاهده همه مطالب</span>
+                <span class="inline-block md:hidden text-[13px] 3xs:text-sm xs:text-base md:text-xl text-var-color-04 group-hover:!ml-[2px] transition-all ease-in-out duration-300">مشاهده همه</span>
+                <div class="relative w-5 h-5">
+                    <svg class="absolute w-full h-full left-[-4px] text-xl text-var-color-04 tracking-tightest">
+                        <use href="#chevron-left-mini-icon"></use>
+                    </svg>
+                </div>
+            </a>
+        </div>
+        <!--- محتوا --->
+        <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[12px] xm:gap-[20px] lg:gap-[30px] [&>*]:bg-var-color-01 dark:[&>*]:bg-var-color-18 [&>*]:shadow-var-shadow-01 [&>*]:rounded-2xl [&>*]:!p-2 [&>*]:2xs:!p-[10px] xs:[&>*]:!p-2 sm:[&>*]:!p-3 md:[&>*]:!p-2.5 !pt-3 xs:!pt-6 md:!pt-12">
+            <!--- محتوا برای عرض بزرگتر یا مساوی 500 پیکسل --->
+            <div class="hidden xs:flex flex-col justify-start items-center gap-y-3 cursor-pointer group">
+                <!--- عکس و کاور --->
+                <div class="relative rounded-2xl rounded-bl-4xl overflow-hidden">
+                    <!--- عکس --->
+                    <img src="{% static 'product/images/blog-1.png' %}" alt="blog">
+                    <!--- کاور موقع هاور شدن در حالت دسکتاپ --->
+                    {% comment %} var-color-03/80 ---> رنگ مورد نظر با اوپسیتی 80 درصد {% endcomment %}
+                    <div class="absolute inset-0 w-full h-full hidden xs:flex-center invisible opacity-0 group-hover:!visible group-hover:!opacity-100 bg-gradient-to-r from-var-color-03/80 to-var-color-04/80 transition-all duration-300 ease-in-out">
+                        <svg class="w-[138px] h-[55px] text-var-color-13">
+                            <use href="#logo-text"></use>
+                        </svg>
+                    </div>
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-row justify-between items-center gap-x-1.5 sm:gap-x-3 md:gap-x-2 2xl:gap-x-5 w-full !pl-[18px] !pr-2">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium md:font-DanaRegular !text-var-color-18 dark:!text-var-color-01 !text-sm sm:!text-base md:!text-sm xm:!text-base 2xl:!text-lg line-clamp-2 m-0">
+                        طرز تهیه انواع قهوه های دمی با دستگاه اروپرس برای سلیقه های مختلف
+                    </h2>
+                    <!--- تاریخ --->
+                    <div class="flex flex-col justify-center items-end text-var-color-07 dark:text-var-color-05 !pr-1.5 sm:!pr-3 md:!pr-2 2xl:!pr-4 border-r border-var-color-31/80 dark:border-var-color-02">
+                        <span class="font-DanaDemiBold text-lg sm:text-xl md:text-lg xm:text-xl 2xl:text-2xl">21</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">اردیبهشت</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">1404</span>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض کوچکتر از 500 پیکسل --->
+            <div class="flex-start gap-x-[8px] 2xs:gap-x-[10px] xs:hidden">
+                <!--- عکس --->
+                <div class="rounded-2xl rounded-bl-4xl overflow-hidden w-[95px] h-[95px] 3xs:w-[110px] 3xs:h-[110px] 2xs:w-[130px] 2xs:h-[130px] shrink-0">
+                    <img class="w-full h-full object-cover" src="{% static 'product/images/blog-1.png' %}" alt="blog">
+                </div>
+                <!--- توضیحات --->
+                {% comment %} flex-1 ---> کل عرض باقیمانده رو بگیر {% endcomment %}
+                <div class="flex flex-col justify-between items-start h-full !pt-2 !pb-1 2xs:!pt-3 2xs:!pb-1.5 flex-1">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium !text-var-color-18 dark:!text-var-color-01 !text-xs 3xs:!text-sm 2xs:!text-[15px] line-clamp-2 w-full m-0">
+                        طرز تهیه انواع قهوه های دمی با دستگاه اروپرس برای سلیقه های مختلف
+                    </h2>
+                    <!--- تاریخ و لینک --->
+                    <div class="flex flex-row justify-between items-center w-full border-t border-var-color-31/60 dark:border-var-color-02 !pt-2 3xs:!pt-3">
+                        <!--- تاریخ --->
+                        <div class="flex-start gap-x-[2px] text-var-color-07 dark:text-var-color-05">
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">21</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">اردیبهشت</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">1404</span>
+                        </div>
+                        <!--- لینک --->
+                        <a href="#" class="flex flex-row justify-end items-center gap-x-[2px] 3xs:gap-x-[3px]">
+                            <span class="text-[11px] 3xs:text-xs 2xs:text-sm text-var-color-04">مطالعه</span>
+                            <div class="w-[13px] h-[13px] 3xs:w-4 3xs:h-4 2xs:w-[18px] 2xs:h-[18px]">
+                                <svg class="w-full h-full text-xl text-var-color-04 tracking-tightest">
+                                    <use href="#simple-arrow-left-icon"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض بزرگتر یا مساوی 500 پیکسل --->
+            <div class="hidden xs:flex flex-col justify-start items-center gap-y-3 cursor-pointer group">
+                <!--- عکس و کاور --->
+                <div class="relative rounded-2xl rounded-bl-4xl overflow-hidden">
+                    <!--- عکس --->
+                    <img src="{% static 'product/images/blog-2.png' %}" alt="blog">
+                    <!--- کاور موقع هاور شدن در حالت دسکتاپ --->
+                    {% comment %} var-color-03/80 ---> رنگ مورد نظر با اوپسیتی 80 درصد {% endcomment %}
+                    <div class="absolute inset-0 w-full h-full hidden xs:flex-center invisible opacity-0 group-hover:!visible group-hover:!opacity-100 bg-gradient-to-r from-var-color-03/80 to-var-color-04/80 transition-all duration-300 ease-in-out">
+                        <svg class="w-[138px] h-[55px] text-var-color-13">
+                            <use href="#logo-text"></use>
+                        </svg>
+                    </div>
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-row justify-between items-center gap-x-1.5 sm:gap-x-3 md:gap-x-2 2xl:gap-x-5 w-full !pl-[18px] !pr-2">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium md:font-DanaRegular !text-var-color-18 dark:!text-var-color-01 !text-sm sm:!text-base md:!text-sm xm:!text-base 2xl:!text-lg line-clamp-2 m-0">
+                        یک نوشیدنی هیجان انگیز و پرکالری برای شروع روز
+                    </h2>
+                    <!--- تاریخ --->
+                    <div class="flex flex-col justify-center items-end text-var-color-07 dark:text-var-color-05 !pr-1.5 sm:!pr-3 md:!pr-2 2xl:!pr-4 border-r border-var-color-31/80 dark:border-var-color-02">
+                        <span class="font-DanaDemiBold text-lg sm:text-xl md:text-lg xm:text-xl 2xl:text-2xl">21</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">اردیبهشت</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">1404</span>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض کوچکتر از 500 پیکسل --->
+            <div class="flex-start gap-x-[8px] 2xs:gap-x-[10px] xs:hidden">
+                <!--- عکس --->
+                <div class="rounded-2xl rounded-bl-4xl overflow-hidden w-[95px] h-[95px] 3xs:w-[110px] 3xs:h-[110px] 2xs:w-[130px] 2xs:h-[130px] shrink-0">
+                    <img class="w-full h-full object-cover" src="{% static 'product/images/blog-2.png' %}" alt="blog">
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-col justify-between items-start h-full !pt-2 !pb-1 2xs:!pt-3 2xs:!pb-1.5 flex-1">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium !text-var-color-18 dark:!text-var-color-01 !text-xs 3xs:!text-sm 2xs:!text-[15px] line-clamp-2 w-full m-0">
+                        یک نوشیدنی هیجان انگیز و پرکالری برای شروع روز
+                    </h2>
+                    <!--- تاریخ و لینک --->
+                    <div class="flex flex-row justify-between items-center w-full border-t border-var-color-31/60 dark:border-var-color-02 !pt-2 3xs:!pt-3">
+                        <!--- تاریخ --->
+                        <div class="flex-start gap-x-[2px] text-var-color-07 dark:text-var-color-05">
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">21</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">اردیبهشت</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">1404</span>
+                        </div>
+                        <!--- لینک --->
+                        <a href="#" class="flex flex-row justify-end items-center gap-x-[2px] 3xs:gap-x-[3px]">
+                            <span class="text-[11px] 3xs:text-xs 2xs:text-sm text-var-color-04">مطالعه</span>
+                            <div class="w-[13px] h-[13px] 3xs:w-4 3xs:h-4 2xs:w-[18px] 2xs:h-[18px]">
+                                <svg class="w-full h-full text-xl text-var-color-04 tracking-tightest">
+                                    <use href="#simple-arrow-left-icon"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض بزرگتر یا مساوی 500 پیکسل --->
+            <div class="hidden xs:flex flex-col justify-start items-center gap-y-3 cursor-pointer group">
+                <!--- عکس و کاور --->
+                <div class="relative rounded-2xl rounded-bl-4xl overflow-hidden">
+                    <!--- عکس --->
+                    <img src="{% static 'product/images/blog-3.png' %}" alt="blog">
+                    <!--- کاور موقع هاور شدن در حالت دسکتاپ --->
+                    {% comment %} var-color-03/80 ---> رنگ مورد نظر با اوپسیتی 80 درصد {% endcomment %}
+                    <div class="absolute inset-0 w-full h-full hidden xs:flex-center invisible opacity-0 group-hover:!visible group-hover:!opacity-100 bg-gradient-to-r from-var-color-03/80 to-var-color-04/80 transition-all duration-300 ease-in-out">
+                        <svg class="w-[138px] h-[55px] text-var-color-13">
+                            <use href="#logo-text"></use>
+                        </svg>
+                    </div>
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-row justify-between items-center gap-x-1.5 sm:gap-x-3 md:gap-x-2 2xl:gap-x-5 w-full !pl-[18px] !pr-2">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium md:font-DanaRegular !text-var-color-18 dark:!text-var-color-01 !text-sm sm:!text-base md:!text-sm xm:!text-base 2xl:!text-lg line-clamp-2 m-0">
+                        طرز تهیه یک فنجان کافه زینو برزیلی
+                    </h2>
+                    <!--- تاریخ --->
+                    <div class="flex flex-col justify-center items-end text-var-color-07 dark:text-var-color-05 !pr-1.5 sm:!pr-3 md:!pr-2 2xl:!pr-4 border-r border-var-color-31/80 dark:border-var-color-02">
+                        <span class="font-DanaDemiBold text-lg sm:text-xl md:text-lg xm:text-xl 2xl:text-2xl">21</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">اردیبهشت</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">1404</span>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض کوچکتر از 500 پیکسل --->
+            <div class="flex-start gap-x-[8px] 2xs:gap-x-[10px] xs:hidden">
+                <!--- عکس --->
+                <div class="rounded-2xl rounded-bl-4xl overflow-hidden w-[95px] h-[95px] 3xs:w-[110px] 3xs:h-[110px] 2xs:w-[130px] 2xs:h-[130px] shrink-0">
+                    <img class="w-full h-full object-cover" src="{% static 'product/images/blog-3.png' %}" alt="blog">
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-col justify-between items-start h-full !pt-2 !pb-1 2xs:!pt-3 2xs:!pb-1.5 flex-1">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium !text-var-color-18 dark:!text-var-color-01 !text-xs 3xs:!text-sm 2xs:!text-[15px] line-clamp-2 w-full m-0">
+                        طرز تهیه یک فنجان کافه زینو برزیلی
+                    </h2>
+                    <!--- تاریخ و لینک --->
+                    <div class="flex flex-row justify-between items-center w-full border-t border-var-color-31/60 dark:border-var-color-02 !pt-2 3xs:!pt-3">
+                        <!--- تاریخ --->
+                        <div class="flex-start gap-x-[2px] text-var-color-07 dark:text-var-color-05">
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">21</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">اردیبهشت</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">1404</span>
+                        </div>
+                        <!--- لینک --->
+                        <a href="#" class="flex flex-row justify-end items-center gap-x-[2px] 3xs:gap-x-[3px]">
+                            <span class="text-[11px] 3xs:text-xs 2xs:text-sm text-var-color-04">مطالعه</span>
+                            <div class="w-[13px] h-[13px] 3xs:w-4 3xs:h-4 2xs:w-[18px] 2xs:h-[18px]">
+                                <svg class="w-full h-full text-xl text-var-color-04 tracking-tightest">
+                                    <use href="#simple-arrow-left-icon"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض بزرگتر یا مساوی 500 پیکسل --->
+            <div class="hidden xs:flex flex-col justify-start items-center gap-y-3 cursor-pointer group">
+                <!--- عکس و کاور --->
+                <div class="relative rounded-2xl rounded-bl-4xl overflow-hidden">
+                    <!--- عکس --->
+                    <img src="{% static 'product/images/blog-4.png' %}" alt="blog">
+                    <!--- کاور موقع هاور شدن در حالت دسکتاپ --->
+                    {% comment %} var-color-03/80 ---> رنگ مورد نظر با اوپسیتی 80 درصد {% endcomment %}
+                    <div class="absolute inset-0 w-full h-full hidden xs:flex-center invisible opacity-0 group-hover:!visible group-hover:!opacity-100 bg-gradient-to-r from-var-color-03/80 to-var-color-04/80 transition-all duration-300 ease-in-out">
+                        <svg class="w-[138px] h-[55px] text-var-color-13">
+                            <use href="#logo-text"></use>
+                        </svg>
+                    </div>
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-row justify-between items-center gap-x-1.5 sm:gap-x-3 md:gap-x-2 2xl:gap-x-5 w-full !pl-[18px] !pr-2">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium md:font-DanaRegular !text-var-color-18 dark:!text-var-color-01 !text-sm sm:!text-base md:!text-sm xm:!text-base 2xl:!text-lg line-clamp-2 m-0">
+                        طرز تهیه قهوه گانودرما مناسب برای جوانسازی پوست
+                    </h2>
+                    <!--- تاریخ --->
+                    <div class="flex flex-col justify-center items-end text-var-color-07 dark:text-var-color-05 !pr-1.5 sm:!pr-3 md:!pr-2 2xl:!pr-4 border-r border-var-color-31/80 dark:border-var-color-02">
+                        <span class="font-DanaDemiBold text-lg sm:text-xl md:text-lg xm:text-xl 2xl:text-2xl">21</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">اردیبهشت</span>
+                        <span class="font-DanaRegular text-xs sm:text-sm md:text-xs xm:text-sm 2xl:text-base">1404</span>
+                    </div>
+                </div>
+            </div>
+            <!--- محتوا برای عرض کوچکتر از 500 پیکسل --->
+            <div class="flex-start gap-x-[8px] 2xs:gap-x-[10px] xs:hidden">
+                <!--- عکس --->
+                <div class="rounded-2xl rounded-bl-4xl overflow-hidden w-[95px] h-[95px] 3xs:w-[110px] 3xs:h-[110px] 2xs:w-[130px] 2xs:h-[130px] shrink-0">
+                    <img class="w-full h-full object-cover" src="{% static 'product/images/blog-4.png' %}" alt="blog">
+                </div>
+                <!--- توضیحات --->
+                <div class="flex flex-col justify-between items-start h-full !pt-2 !pb-1 2xs:!pt-3 2xs:!pb-1.5 flex-1">
+                    <!--- متن --->
+                    <h2 class="font-DanaMedium !text-var-color-18 dark:!text-var-color-01 !text-xs 3xs:!text-sm 2xs:!text-[15px] line-clamp-2 w-full m-0">
+                        طرز تهیه قهوه گانودرما مناسب برای جوانسازی پوست
+                    </h2>
+                    <!--- تاریخ و لینک --->
+                    <div class="flex flex-row justify-between items-center w-full border-t border-var-color-31/60 dark:border-var-color-02 !pt-2 3xs:!pt-3">
+                        <!--- تاریخ --->
+                        <div class="flex-start gap-x-[2px] text-var-color-07 dark:text-var-color-05">
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">21</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">اردیبهشت</span>
+                            <span class="font-DanaRegular text-[11px] 3xs:text-xs 2xs:text-sm">1404</span>
+                        </div>
+                        <!--- لینک --->
+                        <a href="#" class="flex flex-row justify-end items-center gap-x-[2px] 3xs:gap-x-[3px]">
+                            <span class="text-[11px] 3xs:text-xs 2xs:text-sm text-var-color-04">مطالعه</span>
+                            <div class="w-[13px] h-[13px] 3xs:w-4 3xs:h-4 2xs:w-[18px] 2xs:h-[18px]">
+                                <svg class="w-full h-full text-xl text-var-color-04 tracking-tightest">
+                                    <use href="#simple-arrow-left-icon"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--- ثبت سفارش تلفنی --->
+    <section id="phone-order" class="!mt-10 2xs:!mt-12 sm:!mt-15 md:!mt-20 xl:!mt-22 2xl:!mt-27 custom-container">
+        {% comment %} xs:items-stretch ---> در حالت افقی آیتم ها به اندازه ی ارتفاع کانتینرشون کش بیان {% endcomment %}
+        {% comment %} اینجا ارتفاع کانتینر رو ارتفاع عکس تعیین میکنه. ارتفاع قسمت توضیحات بسته به ارتفاع عکس، در راستای عمودی کش میاد {% endcomment %}
+        <div class="flex flex-col xs:flex-row justify-start items-center xs:items-stretch gap-x-2 sm:gap-x-3 gap-y-6 2xs:gap-y-8">
+            <!--- عکس --->
+            <div class="rounded-2xl rounded-bl-4xl overflow-hidden w-[190px] 2xs:w-[220px] xs:w-[160px] sm:w-[170px] md:w-[220px] xm:w-[250px] lg:w-[280px] xl:w-[300px] shrink-0">
+                <img class="w-full object-contain" src="{% static 'product/images/contact.png' %}" alt="contact">
+            </div>
+            <!--- توضیحات --->
+            {% comment %} flex-1 ---> این دستور باعث میشه که قسمت توضیحات در حالت افقی عرض باقیمانده کانتینرش رو بگیره. در حالت عمودی تاثیری نداره {% endcomment %}
+            <div class="flex flex-col justify-between items-start flex-1 gap-y-3 2xs:gap-y-6 xs:gap-y-0">
+                <!--- عنوان --->
+                <div class="flex flex-col justify-center items-start">
+                    <span class="text-xl 2xs:text-2xl xs:text-lg sm:text-2xl xm:text-3xl lg:text-4xl xl:text-5xl font-MorabbaMedium text-var-color-18 dark:text-var-color-01">یکی از بهترین قهوه ها !</span>
+                    <span class="text-base 2xs:text-lg xs:text-[14px] sm:text-base xm:text-lg lg:text-2xl xl:text-3xl font-MorabbaLight text-var-color-18 dark:text-var-color-01 !mt-[2px] md:!mt-2">کیفیت قهوه را از ما بخواهید ...</span>
+                </div>
+                <!--- متن و لینک --->
+                <div class="flex flex-col justify-end items-start gap-y-2 2xs:gap-y-4 xs:gap-y-2 sm:gap-y-2.5 md:gap-y-3">
+                    <!--- متن --->
+                    <span class="font-IRANSansXFaNumRegular text-[12px] 2xs:text-[14px] xs:text-[11px] sm:text-xs md:text-sm xm:text-base lg:text-lg xl:text-[19px] text-var-color-18 dark:text-var-color-01 text-justify line-clamp-5 xs:line-clamp-4">
+                        فضای گرم و دنج ما را احساس کنید، جایی که همه می توانند قهوه معطری پیدا کنند و دسرهای خوشمزه ما را که کاملاً با قهوه داغ همراه شده است، امتحان کنند. فضای داخلی شیک و کارکنان خوش برخورد ما روز شما را می سازد!
+                    </span>
+                    <!--- لینک --->
+                    <a href="#" class="group flex-start gap-x-2 bg-transparent hover:!bg-var-color-04 border-[1px] xl:border-[2px] border-var-color-04 !px-3 2xs:!px-4 xs:!px-3 sm:!px-4 md:!px-5 lg:!px-6 !pt-[6px] !pb-[5px] 2xs:!pt-2 2xs:!pb-[7px] xs:!pt-[7px] xs:!pb-[6px] sm:!pt-2 sm:!pb-[7px] md:!pt-[10px] md:!pb-[9px] lg:!pt-3 lg:!pb-[11px] rounded-full transition-all duration-300 ease-in-out">
+                        <svg class="w-[18px] h-[18px] 2xs:w-6 2xs:h-6 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 !text-var-color-04 group-hover:!text-var-color-01 dark:group-hover:!text-var-color-18">
+                            <use href="#burger-panel-phone-icon"></use>
+                        </svg>
+                        <span class="font-DanaRegular text-xs 2xs:text-sm xs:text-[10px] sm:text-xs md:text-sm lg:text-base !text-var-color-04 group-hover:!text-var-color-01 dark:group-hover:!text-var-color-36">ثبت سفارش تلفنی</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--- خدمات --->
+    <section id="sevices" class="!mt-10 2xs:!mt-12 sm:!mt-16 md:!mt-20 xl:!mt-25 custom-container">
+        <div class="sevices flex flex-row justify-between items-center gap-x-0 sm:gap-x-4 gap-y-0 sm:gap-y-10 flex-wrap [&>*]:w-1/2 sm:[&>*]:w-auto set-equa-min-width">
+            <a href="#" class="flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-x-3 h-auto sm:h-20 flex-item">
+                <svg class="w-[70px] h-[120px] sm:h-20 !pl-1.5">
+                    <use class="inline-block dark:hidden" href="#services-support-icon-light"></use>
+                    <use class="hidden dark:inline-block" href="#services-support-icon-dark"></use>
+                </svg>
+                <div class="flex flex-col justify-center items-center sm:items-start gap-y-2 sm:gap-y-3 h-auto sm:h-full !pb-4.5 sm:!pb-0 shrink-0">
+                    <span class="font-DanaDemiBold text-xs 2xs:text-sm sm:text-lg xl:text-lg text-var-color-18 dark:text-var-color-01 text-center">پشتیبانی شبانه روزی</span>
+                    <span class="font-DanaRegular text-[10px] 2xs:text-[11px] sm:text-sm xl:text-sm text-var-color-18 dark:text-var-color-01 text-center">7 روز هفته، 24 ساعته</span>
+                </div>
+            </a>
+            <a href="#" class="flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-x-3 h-auto sm:h-20 flex-item">
+                <svg class="w-24 h-[120px] sm:h-20 !pt-2">
+                    <use class="inline-block dark:hidden" href="#services-express-icon-light"></use>
+                    <use class="hidden dark:inline-block" href="#services-express-icon-dark"></use>
+                </svg>
+                <div class="flex flex-col justify-center items-center sm:items-start gap-y-2 sm:gap-y-3 h-auto sm:h-full !pb-4.5 sm:!pb-0 shrink-0">
+                    <span class="font-DanaDemiBold text-xs 2xs:text-sm sm:text-lg xl:text-lg text-var-color-18 dark:text-var-color-01 text-center">امکان تحویل اکسپرس</span>
+                    <span class="font-DanaRegular text-[10px] 2xs:text-[11px] sm:text-sm xl:text-sm text-var-color-18 dark:text-var-color-01 text-center">ارسال بسته با سرعت باد</span>
+                </div>
+            </a>
+            <a href="#" class="flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-x-3 h-auto sm:h-20 flex-item">
+                <svg class="w-[58px] h-[120px] sm:h-20 !pl-1.5">
+                    <use class="inline-block dark:hidden" href="#services-coffee-icon-light"></use>
+                    <use class="hidden dark:inline-block" href="#services-coffee-icon-dark"></use>
+                </svg>
+                <div class="flex flex-col justify-center items-center sm:items-start gap-y-2 sm:gap-y-3 h-auto sm:h-full !pb-4.5 sm:!pb-0 shrink-0">
+                    <span class="font-DanaDemiBold text-xs 2xs:text-sm sm:text-lg xl:text-lg text-var-color-18 dark:text-var-color-01 text-center">رست تخصصی</span>
+                    <span class="font-DanaRegular text-[10px] 2xs:text-[11px] sm:text-sm xl:text-sm text-var-color-18 dark:text-var-color-01 text-center">تازه برشته شده و با کیفیت</span>
+                </div>
+            </a>
+            <a href="#" class="flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-x-3 h-auto sm:h-20 flex-item">
+                <svg class="w-18 h-[120px] sm:h-20 !pt-[2px]">
+                    <use class="inline-block dark:hidden" href="#services-pitcher-icon-light"></use>
+                    <use class="hidden dark:inline-block" href="#services-pitcher-icon-dark"></use>
+                </svg>
+                <div class="flex flex-col justify-center items-center sm:items-start gap-y-2 sm:gap-y-3 h-auto sm:h-full !pb-4.5 sm:!pb-0 shrink-0">
+                    <span class="font-DanaDemiBold text-xs 2xs:text-sm sm:text-lg xl:text-lg text-var-color-18 dark:text-var-color-01 text-center">اکسسوری قهوه</span>
+                    <span class="font-DanaRegular text-[10px] 2xs:text-[11px] sm:text-sm xl:text-sm text-var-color-18 dark:text-var-color-01 text-center">وسایل و ادوات دم آوری</span>
+                </div>
+            </a>
+        </div>
+    </section>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'home/js/script.js' %}"></script>
+{% endblock %}

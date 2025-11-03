@@ -1,0 +1,432 @@
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-var-color-01: #FFFFFF;      /* White */
+    --color-var-color-02: #FFFFFF1A;    /* White/10 rgba(255, 255, 255, 0.1) */
+    --color-var-color-03: #FED7AA;      /* Orange 200 */
+    --color-var-color-04: #FDBA74;      /* Orange 300 */
+    --color-var-color-05: #10B981;      /* Emelard 500 */
+    --color-var-color-06: #059669;      /* Emelard 600 */
+    --color-var-color-07: #0D9488;      /* Teal 600 */
+    --color-var-color-08: #0F766E;      /* Teal 700 */
+    --color-var-color-09: #ECE0D1;      /* brown 100 */
+    --color-var-color-10: #DBC1AC;      /* brown 300 */
+    --color-var-color-11: #967259;      /* brown 600 */
+    --color-var-color-12: #634832;      /* brown 900 */
+    --color-var-color-13: #78350F;      /* Amber 900 */
+    --color-var-color-14: #F3F4F6;      /* Gray 100 */
+    --color-var-color-15: #D1D5DB;      /* Gray 300 */
+    --color-var-color-16: #9CA3AF;      /* Gray 400 */
+    --color-var-color-17: #52525B;      /* Zinc 600 */
+    --color-var-color-18: #3F3F46;      /* Zinc 700 */
+    --color-var-color-19: #FACC15;      /* Yellow 400 */
+    --color-var-color-20: #F87171;      /* Red 400 */
+    --color-var-color-21: #00000080;    /* black/50 rgba(0, 0, 0, 0.5) */
+    --color-var-color-22: #ffffff33;    /* white/20 rgba(255, 255, 255, 0.2) */
+    --color-var-color-23: #27272a;      /* Zinc 800 */
+    --color-var-color-24: #ffffff0d;    /* White/5 rgba(255, 255, 255, 0.05) */
+    --color-var-color-25: #047857;      /* Emelard 700 */
+    --color-var-color-26: #e5e7eb;      /* Gray 200 */
+    --color-var-color-27: #fed7aa1a;    /* Orange 200 10% */
+    --color-var-color-28: #FED7AA0D;    /* Orange 200 5% */
+    --color-var-color-29: #ffd28f;      /* Orange 250 */
+    --color-var-color-30: #FED7AA33;    /* Orange 200 20% */
+    --color-var-color-31: #E5E7EB;      /* Gray 200 */
+    --color-var-color-32: #D45760;      /* Red Delete Btn */
+    --color-var-color-33: #b7454d;      /* Red Hover */
+    --color-var-color-34: #F7F8F9;      /* Gray-100/65 */
+    --color-var-color-35: #ef4444;      /* Red 500 */
+    --color-var-color-36: #333338;      /* Zinc 750 */
+    --color-var-color-37: #D9D9D9;      /* footer widget */
+    --color-var-color-38: #ffa739;      /* Orange 370 */
+
+    /* Custom Box Shadow */
+    --shadow-var-shadow-01: 0px 1px 10px 0px rgba(0, 0, 0, 0.05);
+    --shadow-var-shadow-02: 0px 1px 10px 0px rgba(0, 0, 0, 0.10);
+    --shadow-var-shadow-03: 0px 1px 10px 0px rgba(0, 0, 0, 0.20);
+    --shadow-var-shadow-04: 0 0 2px #FDBA74, 0 0 10px #FDBA74, 0 0 20px #FDBA74, 0 0 40px #FDBA74;
+    --shadow-var-shadow-05: 0 0 1px #FDBA74, 0 0 5px #FDBA74, 0 0 10px #FDBA74, 0 0 20px #FDBA74;
+
+    /* Custom Border Radius */
+    --radius-4xl: 2rem;
+
+    /* Custom Font Family */
+    --font-IRANSansXFaNumThin: "IRANSansXFaNum Thin";
+    --font-IRANSansXFaNumUltraLight: "IRANSansXFaNum UltraLight";
+    --font-IRANSansXFaNumLight: "IRANSansXFaNum Light";
+    --font-IRANSansXFaNumMedium: "IRANSansXFaNum Medium";
+    --font-IRANSansXFaNumDemiBold: "IRANSansXFaNum DemiBold";
+    --font-IRANSansXFaNumBold: "IRANSansXFaNum Bold";
+    --font-IRANSansXFaNumExtraBold: "IRANSansXFaNum ExtraBold";
+    --font-IRANSansXFaNumBlack: "IRANSansXFaNum Black";
+    --font-IRANSansXFaNumRegular: "IRANSansXFaNum Regular";
+    --font-DanaRegular: "Dana Regular";
+    --font-DanaMedium: "Dana Medium";
+    --font-DanaDemiBold: "Dana DemiBold";
+    --font-MorabbaLight: "Morabba Light";
+    --font-MorabbaMedium: "Morabba Medium";
+    --font-MorabbaBold: "Morabba Bold";
+
+    /* Custom Letter Spacing */
+    --tracking-tightest: -0.065em;
+
+    /* Custom Breakpoint */
+    --breakpoint-3xs: 350px;
+    --breakpoint-2xs: 400px;
+    --breakpoint-xs: 500px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-xm: 896px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+
+    /* Custom Spacing */
+    --spacing-18: 4.50rem;
+    --spacing-22: 5.50rem;
+    --spacing-25: 6.25rem;
+    --spacing-30: 7.50rem;
+    --spacing-50: 12.5rem;
+}
+
+/* کلاس کانتینر سفارشی */
+@utility custom-container {
+    @apply !mx-4 2xs:!mx-4 md:!mx-12 lg:!mx-20 xl:!mx-30;
+}
+
+/* تعریف کلاس مربوط به بک گراند ایمیج حالت دسکتاپ و بزرگتر */
+/* @utility ---> برای تعریف کلاس اتمیک تیلویند */
+@utility bg-home-banner-desktop {
+    background-image: url('../images/headerBgDesktop.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+
+}
+
+/* تعریف کلاس مربوط به بک گراند ایمیج حالت موبایل */
+@utility bg-home-banner-mobile {
+    background-image: url('../images/headerBgMobile.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+/* ایجاد فونت های سفارشی */
+/* @layer ---> برای اضافه کردن لایه سفارشی به کلاس */
+@layer base {
+    @font-face {
+        font-family: "IRANSansXFaNum Thin";
+        src: local("IRANSansXFaNum Thin"), /* فونت نصب شده روی سیستم */ url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-Thin.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-Thin.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-Thin.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-Thin.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum UltraLight";
+        src: local("IRANSansXFaNum UltraLight"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-UltraLight.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-UltraLight.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-UltraLight.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-UltraLight.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 200;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum Light";
+        src: local("IRANSansXFaNum Light"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-Light.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-Light.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-Light.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-Light.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum Medium";
+        src: local("IRANSansXFaNum Medium"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-Medium.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-Medium.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-Medium.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-Medium.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum DemiBold";
+        src: local("IRANSansXFaNum DemiBold"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-DemiBold.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-DemiBold.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-DemiBold.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-DemiBold.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum Bold";
+        src: local("IRANSansXFaNum Bold"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-Bold.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-Bold.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-Bold.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-Bold.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum ExtraBold";
+        src: local("IRANSansXFaNum ExtraBold"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-ExtraBold.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-ExtraBold.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-ExtraBold.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-ExtraBold.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum Black";
+        src: local("IRANSansXFaNum Black"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-Black.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-Black.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-Black.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-Black.ttf") format("truetype");
+        font-display: swap;
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "IRANSansXFaNum Regular";
+        src: local("IRANSansXFaNum Regular"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff2/IRANSansXFaNum-Regular.woff2") format("woff2"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/WebFonts/Woff/IRANSansXFaNum-Regular.woff") format("woff"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/OtfFonts/IRANSansXFaNum-Regular.otf") format("opentype"),
+        url("../fonts/IranSansX-Pro/FarsiNumerals/TtfFonts/IRANSansXFaNum-Regular.ttf") format("truetype");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Dana Regular";
+        src: local(Dana Regular),
+        url("../fonts/Dana/Woff2/DanaFaNum-Regular.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Dana Medium";
+        src: local(Dana Medium),
+        url("../fonts/Dana/Woff2/DanaFaNum-Medium.woff2") format("woff2");
+        font-display: swap;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Dana DemiBold";
+        src: local(Dana DemiBold),
+        url("../fonts/Dana/Woff2/DanaFaNum-DemiBold.woff2") format("woff2");
+        font-display: swap;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Morabba Light";
+        src: local(Morabba Light),
+        url("../fonts/Morabba/Woff2/Morabba-Light.woff2") format("woff2");
+        font-display: swap;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Morabba Medium";
+        src: local(Morabba Medium),
+        url("../fonts/Morabba/Woff2/Morabba-Medium.woff2") format("woff2");
+        font-display: swap;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Morabba Bold";
+        src: local(Morabba Bold),
+        url("../fonts/Morabba/Woff2/Morabba-Bold.woff2") format("woff2");
+        font-display: swap;
+        font-style: normal;
+    }
+}
+
+/* تغییر تم دارک و لایت */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* تعریف کلاس برای غیر فعال کردن اسکرول بار بصری مرورگر ها */
+/* این کلاس سفارشی برای باکس هایی هست که نمیخوان اسکرولبار بصری داشته باشه */
+/* برای این باکس ها راه حل پیشنهادی استفاده از کرسور گرب یا اسلایدر هست */
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+}
+
+/* تعریف کلاس مربوط به اکتیو شدن آیتمهای برگرمنو وقتی کلیک میشن */
+@layer utilities {
+    .active-burger-menu-item {
+        @apply !text-var-color-04 bg-var-color-30;
+    }
+}
+
+/* تعریف کلاس مربوط به اکتیو شدن گزینه های زیرمنوی آیتم فروشگاه وقتی کلیک میشن */
+@layer utilities {
+    .active-shop-submenu-item {
+        @apply !text-var-color-04 border-r border-r-var-color-04;
+    }
+}
+
+/* کلاس های مربوط به دایره های پایین صفحه هوم */
+@utility circle {
+    @apply hidden md:flex justify-center items-center border rounded-full;
+}
+@utility circle--lg {
+    @apply w-[203px] h-[203px] border-white/25;
+}
+@utility circle--md {
+    @apply w-[145px] h-[145px] border-white/50;
+}
+@utility circle--sm {
+    @apply w-[95px] h-[95px] border-white/80;
+}
+
+/* تعریف کلاس مربوط به بک گراند ایمیج قسمت محصولات در دو حالت دارک و لایت */
+/* @utility ---> برای تعریف کلاس اتمیک تیلویند */
+/* @layer ---> برای اضافه کردن لایه سفارشی به کلاس اتمیک و ساده */
+@utility bg-home-products {
+    /* پیش‌فرض: مخفی */
+    background-image: none;
+    /* از 768px به بالا نمایش بده */
+    @media (min-width: 768px) {
+        background-image: /* linear-gradient(rgba(243, 244, 246, 0.65), rgba(243, 244, 246, 0.65)) ---> حکم لایه اورلی رو داره روی عکس */ linear-gradient(rgba(243, 244, 246, 0.65), rgba(243, 244, 246, 0.65)),
+        url('../images/product-bg.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center top;
+    }
+}
+@layer utilities {
+    .dark .bg-home-products {
+        background-image: none;
+        @media (min-width: 768px) {
+            background-image: url('../images/product-bg.png');
+        }
+    }
+}
+
+/* کلاس مربوط به تخفیف */
+@utility offer {
+    @apply relative text-var-color-16;
+}
+@layer utilities {
+    .offer::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        top: 1px !important;
+        inset: 0;
+        margin: auto;
+        background-color: #ef4444;
+    }
+
+    @media (max-width: 1024px) {
+        .offer::after {
+            top: 2px !important;
+        }
+    }
+    @media (max-width: 400px) {
+        .offer::after {
+            top: 4px !important;
+        }
+    }
+}
+
+/* کلاس سفارشی فلکس سنتر */
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+/* کلاس سفارشی فلکس استارت */
+@utility flex-start {
+    @apply flex justify-start items-center;
+}
+
+/* کلاس سفارشی قسمت بنر تبلیغاتی */
+@utility advertising-banner--item1 {
+    background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.6) 33.85%, rgba(243, 244, 246, 0.1) 100%), url('../images/category-right.jpg');
+    background-repeat: no-repeat;
+    background-size: cover !important;
+}
+@utility advertising-banner--item2 {
+    background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.6) 33.85%, rgba(243, 244, 246, 0.1) 100%), url('../images/category-left.jpg');
+    background-repeat: no-repeat;
+    background-size: cover !important;
+}
+
+/* کلاس سفارشی برای اسپین های اسلایدر پرفروش ترین محصولات */
+@layer utilities {
+    .swiper-button-next-custom, .swiper-button-prev-custom {
+        @apply flex-center w-8 h-8 2xs:w-9 2xs:h-9 md:w-10 md:h-10 rounded-full bg-var-color-01 dark:bg-var-color-18 text-var-color-18 dark:text-var-color-01 shadow-var-shadow-01 cursor-pointer hover:bg-var-color-15 dark:hover:bg-var-color-01 dark:hover:text-var-color-18 transition-all duration-300 ease-in-out;
+    }
+}
+
+/* کد مربوط به خطوط بین المان های قسمت سرویس ها (+) توی حالت موبایل */
+@utility sevices {
+    @apply relative;
+}
+@layer utilities {
+    .sevices::after,
+    .sevices::before {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        background-color: #D1D5DB;
+    }
+    @media (min-width: 640px) {
+        .sevices::after,
+        .sevices::before {
+            content: none;
+        }
+    }
+    html.dark .sevices::after,
+    html.dark .sevices::before {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .sevices::after {
+        width: 1px;
+        height: 100%;
+    }
+    .sevices::before {
+        width: 100%;
+        height: 1px;
+    }
+}
