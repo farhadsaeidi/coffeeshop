@@ -414,13 +414,13 @@
         };
 
         const showBtn = () => {
-            scrollTopBtn.classList.add('visible', 'opacity-100', 'translate-y-0');
-            scrollTopBtn.classList.remove('invisible', 'opacity-0', 'translate-y-10');
+            scrollTopBtn.classList.add("visible", "bottom-20", "2xs:bottom-22", "sm:bottom-9", "md:bottom-12", "lg:bottom-10");
+            scrollTopBtn.classList.remove("invisible", "bottom-[-50px]");
         };
 
         const hideBtn = () => {
-            scrollTopBtn.classList.add('invisible', 'opacity-0', 'translate-y-10');
-            scrollTopBtn.classList.remove('visible', 'opacity-100', 'translate-y-0');
+            scrollTopBtn.classList.add("invisible", "bottom-[-50px]");
+            scrollTopBtn.classList.remove("visible", "bottom-20", "2xs:bottom-22", "sm:bottom-9", "md:bottom-12", "lg:bottom-10");
         };
 
         const threshold = Math.max(200, ((window.innerHeight || 800) * 0.25));
